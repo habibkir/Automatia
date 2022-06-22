@@ -1,0 +1,12 @@
+Il seguente programma è stato fatto vedendo gli argomenti richiesti
+dagli esercizii di riepilogo presi da moodle, non aspettatevi sta
+fonte attendibilissima di informazioni
+
+* LTI TC
+
+** Modi naturali
+** Stabilità interna
+** Stabilità esterna
+** Funzione di trasferimento
+** Rapporto tra ingresso e uscita
+

@@ -1,0 +1,122 @@
+* Controllabilità e Stabilizzabilità
+
+vediamo dal punto di vista formale l'idea del poter
+controllare gli autovalori di un sistema
+
+** Controllabilità
+andremo a mettere sta roba a un sistema LTI TC
+prendiamo gli autovalori di A*
+un autovalore che non dipende dai parametri di
+controllo dell'autovalore è un autovalore non
+controllabile, non posso cambiarlo tramite controllo,
+resta quello.
+
+
+il carrello era un sistema completamente controllabile,
+visto che agendo sul controllo potevo influenzare tutti
+gli autovalori del sistema controllo+processo
+
+** Stabilità
+se A* non ha autovalori modificabili con controllo
+allora il sistema è non complemamente controllabile
+
+
+un sistema stabilizzabile è un sistema per cui se ho
+parametri di controllo adatti allora posso renderlo
+stabile, se è completamente controllabile, o se gli
+autovalori non controllabili non danno problemi di
+stabilità 
+
+
+un sistema è non stabilizzabile se \nesists valori di
+controllo tali che il sistema controllo+processo sia
+stabile (pag 40 del pdf del prof), se ha quindi
+autovalori non controllabili con parte reale \geq 0
+
+prendiamo un sistema lineare tempo invariante
+
+** Rigorosese
+
+un autovalore \lambda_i si dice *controllabile* se può
+essere modificato tramite il controllo, e si dice *non
+controllabile* se non può essere modificato tramite il
+controllo.
+
+
+posso quindi partizionare l'insieme degli autovalori
+del mio sistema in autovalori controllabili e in
+autovalori non controllabili.
+
+
+viene fuori, per quanto sia più complicato da
+dimostrare, che gli autovalori controllabili sono
+assegnabili a piacere, quando ho un autovalore
+controllabile posso metterlo dove voglio, con unico
+vincolo il fatto che se ho un autovalore complesso
+allora deve essere complesso pure il suo coniugato
+complesso (visto che sono radici di un polinomio)
+
+
+per il resto gli autovalori controllabili posso
+metterli dove voglio, non danno alcun problema per
+quanto riguarda il problema della stabilizzazione.
+
+
+altrimenti non sono controllabili e non posso fare un
+cazzo con gli autovalori non controllabili
+
+*** Polinomio caratteristico di controllo
+definisco \phi _c(s) *polinomio caratteristico di
+controllo* come quella parte di polinomio
+caratteristico data dagli autovalori (radici di \phi
+(s)) che posso controllare.
+
+Che ha quindi come radici tutti e soli gli autovalori
+controllabilio
+
+
+definisco come suo complemento il polinomio \phi _{nc}(s)
+come quella parte di \phi (s) che contiene tutti i poli
+che non sono in \phi _c(s)
+
+*** Risultato
+
+*Definizione* : Un sistema LTI si dice
+	- *completamente controllabile* se tutti gli
+          autovalori sono controllabili
+	- *stabilizzabile* se tutti gli autovalori non
+          controllabili sono asintoticamente stabili
+
+naturalmente la controllabilità è più forte della
+stabilizzabilità visto che un sistema controllabile non
+ha autovalori non controllabili che potrebberlo
+renderlo instabile.
+
+
+Quando devo controllare un sistema è quindi sempre
+importante controllare che il sistema sia controllabile
+o perlomeno stabilizzabile
+
+*** Parte controllabile
+esiste un altro metodo per caprire quali sono gli
+autovalori controllabili e non del sistema, si potrà
+calcolare la parte controllabile facilmente, e sarà il
+metodo che devi sapere per l'esame
+
+
+bla bla bla...
+
+
+ogni insieme può essere scomposto in una parte
+controllabile e in una parte non controllabile, la
+parte controllabile viene influenzata dall'input, la
+parte non controllabile si evolve in modo del tutto
+autonomo.
+
+
+Nella risposta forzata si trova quindi solo la parte
+controllabile del sistema. L'evoluzoine forzata del
+sistema contiene tutti e soli gli autovalori
+controllabili del sistema, visto che non posso forzare
+gli autovalori non controllabili, visto che non posso
+controllarli, per definizione.

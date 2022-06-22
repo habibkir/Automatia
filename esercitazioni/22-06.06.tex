@@ -1,0 +1,117 @@
+% Created 2022-06-06 Mon 15:26
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\date{\today}
+\title{}
+\hypersetup{
+ pdfauthor={},
+ pdftitle={},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 28.1 (Org mode 9.5.2)}, 
+ pdflang={English}}
+\begin{document}
+
+\tableofcontents
+
+\section{Osservazioni}
+\label{sec:org8c9363f}
+
+La retroazine e il coso dello stato possono essere progettate indipendentemente$\backslash$
+
+si sceglie il guadagno H in modo da garantire la specifica 2 progettare il guadagno L$\backslash$
+dell'osservatore, garantire che l'errore dell'osservatore faccia boh in modo che applicare
+la retroazione sullo stato stimato sia equivalente ad applicarla sullo stato sticazzi
+
+\subsection{Cose}
+\label{sec:org94cda24}
+
+Prima di tutto bisogna assicurarci che il problema sia ben posto, e che quindi
+\[\exists F : A-BF \text{ asintoticamente stabile } \iff
+\text{ il sistema è stabilizzabile } \]
+
+quindi tutti gli autovalori controllabili hanno Re \(\geq 0\) gli autovalori non$\backslash$
+controllabili sono le radici di \(\phi _h(s)\)
+
+\[\exists L : A-BF \text{ asintoticamente stabile }
+\iff \text{ tutti gli autovalori non osservabili hanno } Re < 0 \]
+
+devo fare \((sI - A)^{-1}\), poi \(\phi _c(s)\), poi \(\phi _nc(s) = \frac{\phi (s)}{\phi
+_{nc}(s)}\)
+
+poi poi \(\phi _o(s)\), poi \$\(\phi\) \_nc(s) = \frac{\phi (s)}\{\(\phi\) \_\{no\}(s)\}\$$\backslash$
+
+entrambe le condizioni tutti autovalori controllabili con Re\ldots{} e tutti autovalori$\backslash$
+osservabili con Re\ldots{}
+
+\subsubsection{Quest'affare che ha il prodotto per B}
+\label{sec:org67854de}
+
+bla bla bla sappiamo che
+\[(sI-A)^{-1} = \frac{1}{\phi (s)} Adj(sI-A) = \frac{1}{(s+1)(s-1)} Adj \text{ roba } \]
+
+vediamo se qualche di questi autovalori si perde nella moltiplicazione per B (perdendo di
+controllabilità) o nella motliplicazione per C (perdendo di osservabilità) (credo)
+
+Il sistema è completamente controllabile, quindi è stabilizzabile, quinid \(\exists F :
+A-BF\) asintoticamente stabile
+
+andiamo a vedere com'è fatta sta matrice, roba$\backslash$
+
+\subsubsection{Guadagno L di roba, che ha il prodotto per C}
+\label{sec:org0f76ef6}
+
+come autovalori osservabili ho solo quelli che stanno al denominatore di
+\[C(sI-A)^{-1} \]
+
+abbiamo che gli autovalori non osservabili, stavolta esistono, non completamente$\backslash$
+osservabile, ma gli autovalori non osservabili hanno \(Re < 0\), quindi la te non
+osservabile è stabile, quindi nessun problema
+
+Mi raccomando l'ordine durante il prodotto di vettori e matrici e sticazzi con numeri$\backslash$
+all'interno di essi disposti in un certo modo, mi raccomando
+
+\[det (sI - A + LC) = \text{ roba} \]
+
+abbiamo visto che la dinamica dell'errore$\backslash$
+
+\[
+\dot{\epsilon} = (A-LC) \epsilon
+\]
+che risolvi con qualche cazzo di esponenziale di matrice del cazzo, cazzo
+
+\subsubsection{Fine}
+\label{sec:orgf6b1314}
+Ho progettato in modo \emph{indipendente} e \emph{figamente ortogonale} e \emph{strutturato} F ed L del$\backslash$
+sistema
+
+Poi abbiamo bla bla bla
+\[G^{\asterisk}_{y^{\circle}y} = \frac{\text{roba}{roba}} \]
+
+gli esercizi fa ste domande ma bisogna sapere perchè, sapere perchè devo soddisfare ste
+condizioni, perchè il guadagno in ciclo chiuso deve essere unitario, perchè roba deve fare
+roba\ldots{}
+
+è importante anche sapere perchè si fa qualcosa, se sapete fare la procedura ma non sapete
+perchè si fa allora non è interessante (e posso sostituirvi con una scimmia ammaestrata),
+allora sapere com'è fatto il regolatore, le varie strutture di controllo, guadagni del
+cazzo, quello che si è visto a lezione
+
+all'orale può fare domande su un po' tutto$\backslash$
+
+Gli esami sono in presenza a meno di \emph{motivi ticolari}$\backslash$
+
+\section{Seconda te dell'esercitazione}
+\label{sec:org3f58094}
+\end{document}

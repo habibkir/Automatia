@@ -1,0 +1,117 @@
+* Rivedendo fatto scorsa volta
+
+vogliamo stabilizzare il sistema, ma abbiamo visto da
+prima che agendo sul controllo non possiamo sempre
+stabilizzare il sistema.
+
+dividiamo gli autovalori in
+	1. autovalori controllabili
+	2. autovalori non controllabili
+\par.	   
+
+e dividiamo il polinomio caratteristico in 2 parti, la
+parte determinata dagli autovalori controllabili, e la
+parte determinata dagli autovalori non controllabile
+	1. \phi _c(s), fatto dagli autovalori
+           controllabili, può essere modificato a
+           piacere
+	2. \phi _{nc}, fatto dagli autovalori non
+           controllabili, non posso farci niente
+\par.	   
+	   
+Un sistema è detto *stabilizzabile* se gli autovalori
+non controllabili non danno problemi di stabilità,
+quindi o non ha autovalori non controlalbili, oppure,
+se esistono quelli non controllabili, allora hanno
+parte reale < 0.\par.
+
+Se c'è quindi un modo per avere solo autovalori con parte
+reale minore di q\par.
+
+* Cose che mi sono perso
+
+Me le sono perse, non ho preso sti appunti
+
+* Continuo
+
+La risposta forzata presenta come autovalori solo gli
+autovalori controllabili del sistema, quelli non
+controllabili sono rimossi dalla moltiplicazone per B\par.
+
+** Qualcosa con degli autovalori
+
+visto che la risposta forzata cha come poli autovalori
+solo quelli controllabili, qualcosa qualcosa e il
+polinomio degli autovalori controllabili può essere
+trovato facendo il mimino comune multiplo dei
+denominatori di non so che matrice che ha a che fare
+con la risposta forzata.\par.
+
+
+* Ha fatto degli esercizi
+
+* Proprietà di raggiungibilità
+
+consideriamo un problema di controllo prototipale,
+è possiblie portare x dallo stato 0 a uno stato che
+voglio?
+Ci chiediamo se applicando il controllo possiamo
+trasferirire lo stato da uno stato prototipale 0 a uno
+stato desiderato, è un problema prototipale che chiede
+"possiamo raggiungere sto stato" senza farsi troppe
+domande su come ci arriviamo. Si pensi ad esempio al
+controllo di un braccio robotico da uno stato di
+riposo a una certa posizione, ad esempio per afferrare
+un oggetto, questo dipende dalle solite cazzo di
+matrici.\par.
+
+Visto che partiamo da 0 l'evoluzione libera non è
+presente per come abbiamo visto che viene descritta in
+un sistema LTI. Per la raggiungibilità conviene
+pensare nel tempo invece che in Laplace.
+
+** Mini nota su applicazioni pratiche
+
+Questo tipo di problemi è spesso usato per
+rappresentare controllo di sistemi complessi, ad
+esempio per il controllo di un sistema di dinamica
+delle opinioni, che abbiamo visto all'inizio del
+corso.\par.
+
+Oppure per rappresentare l'evoluzione di un'ecosistema
+hai una certa evoluzoine naturale, dato un sistema
+in questo modo supponiamo di poter modificare alcune
+parti dello stato, ad esempio in un ecosistema
+possiamo fare ripopolamento o *e r a d i c a r e*, per
+un sistema di dinamica delle opinioni possiamo
+applicare una pesante campagna di marketing su quanto
+sia figo venderti l'anima a randomcorp e alle sue
+soluzinoi IoT fatte con kubernetes nella blockchain.\par.
+
+Per cybersecurity ad esempio possiamo vedere se un
+agente malevolo capace di modificare alcune parti di
+un sistema informatico può sputtanare pesantemente il
+sistema, in caso affermativo hai disegnato un sistema
+di merda, rifallo.\par. 
+
+** Stati raggiungibili
+
+Se partendo dallo stato 0 possiamo applicare il
+controllo e arrivare a x^o desiderato, allora lo stato
+x^o è definito *raggingibile* altimenti lo stato non è
+raggiungibile, definisco X_r come insieme di tutti gli
+stati raggiungibili in questo modo, se X_r conincide
+com \mathbb{R}^n allora il sistema si dice
+*completamente raggiungibile*.-par.
+
+in generale X_r è un *sottospazio lineare* di
+\mathbb{R}^n-par.
+
+** Qualche collegamento
+
+	1. completa controllabilità \to completa
+           controllabilità
+	2. non vi è completa controllabilità \to non vi
+           è completa raggiungibiltà
+
+Come facciamo a sapere quali stati posso raggiungere?

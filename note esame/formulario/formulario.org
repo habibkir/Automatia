@@ -11,6 +11,8 @@ e/o slide e/o la cazzo di cane
 ** Teoremi
 	* Ritardo
 	  \[\mathcal{L}\{e^{\lambda t}f(t)\} = F(s-\lambda)\]
+	* Prodotto per $t$ / derivata in frequenza
+	  \[\mathcal{L}\{t f(t)\} = -\frac{d}{ds} F(s)\]
 
 ** Notevoli
 	* Gradino (ricavi con definizione)
@@ -24,28 +26,56 @@ e/o slide e/o la cazzo di cane
 	* Impulso di dirac (ricavi con definizione) (usata per funzioni semplicemente proprie)
 	  \[ \mathcal{L}\{\delta (t)\} = 1 \]
 	* Rampa unitaria (ricavi prodotto per t) (usata per poli nulli a molteplicità 2)
+	  \[\mathcal{L}\{t 1(t)\} = -\frac{d}{ds} \mathcal{L}\{1(t)\}
+	  = -\frac{d}{ds}(\frac{1}{s}) = \frac{1}{s^2}\]
 	* Rampa parabolica (ricavi prodotto per t) (usata per poli nulli a molteplicità 3)
-	* Esponenziale \times monomoio (usata per poli non nulli a molteplicità multipla)
-
+	  \[\mathcal{L}\{t^2 1(t)\} = \mathcal{L}\{t \times t 1(t)\} =
+	  -\frac{d}{ds} (\frac{1}{s^2}) = \frac{2}{s^3}\]
+	* Esponenziale \times monomoio
+	  (ricavi ripetendo derivate) (usata per poli non nulli a molteplicità multipla)
+	  \begin{align*}
+	  \text{forma generica } &\Rightarrow \frac{t^l}{l!} e^{at} 1(t) \\%
+	  %
+	  l=1 &\Rightarrow  \mathcal{L}\{t e^{at} 1(t)\} \\
+	  & = -\frac{d}{ds} \mathcal{L}\{e^{at} 1(t)\} \\
+	  & = -\frac{d}{ds} ( \frac{1}{s-a} ) \\
+	  & = \frac{1}{(s-a)^2} \\ \\
+	  %
+	  l=2 &\Rightarrow \mathcal{L}\{\frac{t^2}{2} e^{at} 1(t)\} \\
+	  & = \frac{1}{2} \mathcal{L}\{t \times t e^{at} 1(t)\} \\
+	  & = -\frac{1}{2} \frac{d}{ds} \mathcal{L}\{t e^{at}1(t)\} \\
+	  & = -\frac{1}{2} \frac{d}{ds} (\frac{1}{(s-a)^2}) \\
+          & = -\frac{1}{2} \frac{-2}{(s-a)^3} \\
+	  & = \frac{1}{(s-a)^3}
+	  \end{align*}
+	  Andando per induzione ti ritrovi
+	  \[ \mathcal{L}\{\frac{t^l}{l!} e^{at} 1(t)\} = \frac{1}{(s-a)^{l+1}}\]
+	  
+	  (i fattoriali li mette perchè a ogni passo hai un'altra potenza, a ogni potenza devi
+          rifare la derivata che ti moltiplicare per l'intero dopo, hai tutti sti di interi e come
+          li togli? dividi per il fattoriale(!))
 
 * Antitrasformata laplace / Analisi modale
 ** Residui
 
 ** Risposta per poli...
-	* Reali 
-	  Modo naturale $e^{polo\ t}$, con $t \geq 0$
-	* Complessi coniugati $\sigma \pm j\omega$ (I complessi sono per forza coniugati qui)
+	* Reali:
+	  * Modo naturale $e^{polo\ t}$, con $t \geq 0$
+	* Complessi coniugati $\sigma \pm j\omega$ (I complessi sono per forza coniugati qui, in
+          quanto radici di un polinomio con coefficienti reali)
 	   Detti:
 	  * $K$ e $\overline{K}$ i residui corrispondenti ai poli, che saranno coniugati complessi 
 	  * \alpha e \beta le parti reali e immaginarie di $K$
-	    (o $\overline{K}$ tanto la formula torna lo stesso)
 	  \[ e^{\sigma t} (2 \alpha \cos(\omega t) - 2 \beta \sin(\omega t)) 1(t) \]
 
 ** Poli a molteplicità multipla
-	* Reali con molteplicità $l$
-	  Modi naturali $1(t)$, $t 1(t)$, ..., $t^{l-1} 1(t)$ 
-	* Complessi coniugati com molteplicità $l$
-	  Modi nautrali (da rivedere) 
+	* Pari a 0 molteplicità $l$
+	  * Laplace : fratti semplici $\frac{K_{boh,1}}{s}$, $\frac{K_{boh,2}}{s^2}$, ..., $\frac{K_{boh,s}}{s^l}$
+	  * Tempo : modi naturali $1(t)$, $t 1(t)$, ..., $t^{l-1} 1(t)$ 
+	* Reali con molteplicità pari a $l$
+	  * Laplace : fratti semplici $\frac{K_{boh,1}}{(s-a)}$, $\frac{K_{boh,2}}{(s-a)^2}$,
+	    ..., $\frac{K_{boh,l}}{(s-a)^l}$
+	  * Tempo : modi naturali $e^{at}$, $t e^{at}$, $t^2 e{at}$, ..., $t^{l-1} e^{at}$
 
 
 * Sistemi LTI TC
@@ -78,7 +108,7 @@ e/o slide e/o la cazzo di cane
 	    \[y(t) = y_l (t) + y_f (t) = C e^{At} x_0 +
 	    \int_{0}^{t} C e^{A(t-\tau)} Bu(\tau) d \tau + D u(t) \]
 *** Evoluzioni in Laplace
-	* Evoluzione stato nel tempo
+	* Evoluzione stato in Laplace
 	  * libera
 	    \[X_l (s) = \mathcal{L} \{e^{At} x_0\} = (sI - A)^{-1} x_0\]
 	  * forzata
@@ -87,7 +117,7 @@ e/o slide e/o la cazzo di cane
 	    \[X(s) = X_l (s) + X_f (s) =
 	    (sI - A)^{-1} x_0 + (sI - A)^{-1} BU(s) \]
 
-	* Evoluzione uscita nel tempo
+	* Evoluzione uscita in Laplace
 	  * libera
 	    \[Y_l (s) = C X_l (s) = C(sI - A)^{-1} x_0\]
 	  * forzata

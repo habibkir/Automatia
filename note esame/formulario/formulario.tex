@@ -1,4 +1,4 @@
-% Created 2022-06-21 Tue 13:38
+% Created 2022-06-22 Wed 11:30
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -32,21 +32,23 @@ esercizii di riepilogo (non ha pubblicato un programma, che io sappia)
 e/o slide e/o la cazzo di cane
 
 \section{Trasformata Laplace}
-\label{sec:orgf05aa9c}
+\label{sec:org03f9a32}
 \begin{itemize}
 \item Definzione
 \[\mathcal{L}\{f(t)\} = \int_{0}^{\infty} f(t) e^{-st} dt = F(s)\]
 \end{itemize}
 
 \subsection{Teoremi}
-\label{sec:org1018507}
+\label{sec:orgbac12db}
 \begin{itemize}
 \item Ritardo
 \[\mathcal{L}\{e^{\lambda t}f(t)\} = F(s-\lambda)\]
+\item Prodotto per \(t\) / derivata in frequenza
+\[\mathcal{L}\{t f(t)\} = -\frac{d}{ds} F(s)\]
 \end{itemize}
 
 \subsection{Notevoli}
-\label{sec:orge9fbadc}
+\label{sec:orgeb9d876}
 \begin{itemize}
 \item Gradino (ricavi con definizione)
 \[ \mathcal{L}\{1(t)\} = \frac{1}{s} \]
@@ -59,43 +61,77 @@ e/o slide e/o la cazzo di cane
 \item Impulso di dirac (ricavi con definizione) (usata per funzioni semplicemente proprie)
 \[ \mathcal{L}\{\delta (t)\} = 1 \]
 \item Rampa unitaria (ricavi prodotto per t) (usata per poli nulli a molteplicità 2)
+\[\mathcal{L}\{t 1(t)\} = -\frac{d}{ds} \mathcal{L}\{1(t)\}
+	  = -\frac{d}{ds}(\frac{1}{s}) = \frac{1}{s^2}\]
 \item Rampa parabolica (ricavi prodotto per t) (usata per poli nulli a molteplicità 3)
-\item Esponenziale \texttimes{} monomoio (usata per poli non nulli a molteplicità multipla)
+\[\mathcal{L}\{t^2 1(t)\} = \mathcal{L}\{t \times t 1(t)\} =
+	  -\frac{d}{ds} (\frac{1}{s^2}) = \frac{2}{s^3}\]
+\item Esponenziale \texttimes{} monomoio
+(ricavi ripetendo derivate) (usata per poli non nulli a molteplicità multipla)
+\begin{align*}
+\text{forma generica } &\Rightarrow \frac{t^l}{l!} e^{at} 1(t) \\%
+%
+l=1 &\Rightarrow  \mathcal{L}\{t e^{at} 1(t)\} \\
+& = -\frac{d}{ds} \mathcal{L}\{e^{at} 1(t)\} \\
+& = -\frac{d}{ds} ( \frac{1}{s-a} ) \\
+& = \frac{1}{(s-a)^2} \\ \\
+%
+l=2 &\Rightarrow \mathcal{L}\{\frac{t^2}{2} e^{at} 1(t)\} \\
+& = \frac{1}{2} \mathcal{L}\{t \times t e^{at} 1(t)\} \\
+& = -\frac{1}{2} \frac{d}{ds} \mathcal{L}\{t e^{at}1(t)\} \\
+& = -\frac{1}{2} \frac{d}{ds} (\frac{1}{(s-a)^2}) \\
+& = -\frac{1}{2} \frac{-2}{(s-a)^3} \\
+& = \frac{1}{(s-a)^3}
+\end{align*}
+Andando per induzione ti ritrovi
+\[ \mathcal{L}\{\frac{t^l}{l!} e^{at} 1(t)\} = \frac{1}{(s-a)^{l+1}}\]
+
+(i fattoriali li mette perchè a ogni passo hai un'altra potenza, a ogni potenza devi
+rifare la derivata che ti moltiplicare per l'intero dopo, hai tutti sti di interi e come
+li togli? dividi per il fattoriale(!))
 \end{itemize}
 
-
 \section{Antitrasformata laplace / Analisi modale}
-\label{sec:orgbf9fcc9}
+\label{sec:orge8458b1}
 \subsection{Residui}
-\label{sec:org58ff083}
+\label{sec:orgc9bb973}
 
 \subsection{Risposta per poli\ldots{}}
-\label{sec:org66c52a8}
+\label{sec:orga21070b}
 \begin{itemize}
-\item Reali 
-Modo naturale \(e^{polo\ t}\), con \(t \geq 0\)
-\item Complessi coniugati \(\sigma \pm j\omega\) (I complessi sono per forza coniugati qui)
-Detti:
+\item Reali:
+\begin{itemize}
+\item Modo naturale \(e^{polo\ t}\), con \(t \geq 0\)
+\end{itemize}
+\item Complessi coniugati \(\sigma \pm j\omega\) (I complessi sono per forza coniugati qui, in
+quanto radici di un polinomio con coefficienti reali)
+ Detti:
 \begin{itemize}
 \item \(K\) e \(\overline{K}\) i residui corrispondenti ai poli, che saranno coniugati complessi
 \item \(\alpha\) e \(\beta\) le parti reali e immaginarie di \(K\)
-(o \(\overline{K}\) tanto la formula torna lo stesso)
 \end{itemize}
 \[ e^{\sigma t} (2 \alpha \cos(\omega t) - 2 \beta \sin(\omega t)) 1(t) \]
 \end{itemize}
 
 \subsection{Poli a molteplicità multipla}
-\label{sec:org72c26c6}
+\label{sec:org845022e}
 \begin{itemize}
-\item Reali con molteplicità \(l\)
-Modi naturali \(1(t)\), \(t 1(t)\), \ldots{}, \(t^{l-1} 1(t)\)
-\item Complessi coniugati com molteplicità \(l\)
-Modi nautrali (da rivedere)
+\item Pari a 0 molteplicità \(l\)
+\begin{itemize}
+\item Laplace : fratti semplici \(\frac{K_{boh,1}}{s}\), \(\frac{K_{boh,2}}{s^2}\), \ldots{}, \(\frac{K_{boh,s}}{s^l}\)
+\item Tempo : modi naturali \(1(t)\), \(t 1(t)\), \ldots{}, \(t^{l-1} 1(t)\)
+\end{itemize}
+\item Reali con molteplicità pari a \(l\)
+\begin{itemize}
+\item Laplace : fratti semplici \(\frac{K_{boh,1}}{(s-a)}\), \(\frac{K_{boh,2}}{(s-a)^2}\),
+\ldots{}, \(\frac{K_{boh,l}}{(s-a)^l}\)
+\item Tempo : modi naturali \(e^{at}\), \(t e^{at}\), \(t^2 e{at}\), \ldots{}, \(t^{l-1} e^{at}\)
+\end{itemize}
 \end{itemize}
 
 
 \section{Sistemi LTI TC}
-\label{sec:orga8b4b24}
+\label{sec:org4e59118}
 \begin{itemize}
 \item Definizione:
 \[\begin{cases}
@@ -107,9 +143,9 @@ per i sistemi SISO (Single Input, Single Output) \(B\) è un vettore colonna,
 \end{itemize}
 
 \subsection{Evoluzione stato e uscita}
-\label{sec:orgfd1d506}
+\label{sec:orgba817b5}
 \subsubsection{Evoluzioni nel tempo}
-\label{sec:orgb4d76c9}
+\label{sec:org46addc2}
 \begin{itemize}
 \item Evoluzione stato nel tempo
 \begin{itemize}
@@ -135,9 +171,9 @@ per i sistemi SISO (Single Input, Single Output) \(B\) è un vettore colonna,
 \end{itemize}
 \end{itemize}
 \subsubsection{Evoluzioni in Laplace}
-\label{sec:orgedad21f}
+\label{sec:org170c11c}
 \begin{itemize}
-\item Evoluzione stato nel tempo
+\item Evoluzione stato in Laplace
 \begin{itemize}
 \item libera
 \[X_l (s) = \mathcal{L} \{e^{At} x_0\} = (sI - A)^{-1} x_0\]
@@ -148,7 +184,7 @@ per i sistemi SISO (Single Input, Single Output) \(B\) è un vettore colonna,
 	    (sI - A)^{-1} x_0 + (sI - A)^{-1} BU(s) \]
 \end{itemize}
 
-\item Evoluzione uscita nel tempo
+\item Evoluzione uscita in Laplace
 \begin{itemize}
 \item libera
 \[Y_l (s) = C X_l (s) = C(sI - A)^{-1} x_0\]
@@ -161,6 +197,6 @@ per i sistemi SISO (Single Input, Single Output) \(B\) è un vettore colonna,
 \end{itemize}
 
 \subsubsection{Funzione di trasferimento}
-\label{sec:org8c89da3}
+\label{sec:org5fb6766}
 \[G(s) = \frac{Y_f(s)}{U(s)} = C(sI-A)^{-1}B + D\]
 \end{document}

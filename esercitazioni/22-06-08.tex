@@ -1,0 +1,156 @@
+% Created 2022-06-08 Wed 09:43
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\date{\today}
+\title{}
+\hypersetup{
+ pdfauthor={},
+ pdftitle={},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 28.1 (Org mode 9.5.2)}, 
+ pdflang={English}}
+\begin{document}
+
+\tableofcontents
+
+\section{Boh}
+\label{sec:org48e543d}
+
+In questa lezione vediamo gli esercizi relativi al controllo in retroazione sull'uscita
+
+\subsection{Retroazione algebrica}
+\label{sec:org65cf6db}
+vediamo prima il caso di una retroazine algebrica sull'uscita, quindi dovemo fare il
+guadagno in feedback e il guadagno in feed forward
+
+prima troavre polinomio caratteristico e funzione di trasferimento
+
+visto che è un sistema di ordine 3 da già l'aggiogata
+
+\subsubsection{Polinomio caratteristico e funzione di trasferimento}
+\label{sec:orgecec2ea}
+
+I calcoli sono gli stessi ma ho un sistema di ordine maggiore, evviva, sticazzi
+
+trovo il polinomio caratteristico, questo è \(s^3 -1\), le radici di sto polinomio sono le
+radici cubiche complesse dell'unità, vertici di un triangolo equilatero sul cerchio
+unitario
+
+con questo polinomio caratteristico e l'aggiogata e altra roba poi vado a trovarmi la
+funzione di trasferimento del sistema
+
+vediamo per quali valori di \(\alpha\) ci sono semplificazioni nella funzione di
+trasferimento, la difficoltà è principalmente saper ragionare su polinomii parametrici e
+vedere per quali valori ci sono semplificazioni in cosi tipo la funzione di trasferimento
+
+per completare lo studio della funzione di trasferimento devo vedere anche [\ldots{}]
+
+\subsubsection{Per quali \(\alpha\) il problema è ben posto}
+\label{sec:orgebb3d5e}
+
+Il problema di controllo è ben posto se e solamente se il polinomio \(\phi\) \_h(s), che si
+calcola come rapporto tra polinomio caratteristico e denominatore di G(s), è un polinomio
+asintoticamente stabile
+
+abbiamo visto nella parte prima che per \(\alpha\) \(\neq\) -1 allora abbiamo G(s) messo bene,
+altrimenti ho un autovalore in 1 nascosto, se ho un autovalore instabile nascosto allora
+ho un problema di controllo mal posto, perchè non posso stabilizzare il sistema
+
+per \(\alpha\) \(\neq\) -1 abbiamo \(\phi\) \_h(s) = 1, senza autovalori instabili, quindi il problema
+di controllo è ben posto
+
+le prime due domande dell'esercizio sono domande di studio preliminari
+
+\subsection{Lascia stare sti parametri}
+\label{sec:orga35002c}
+
+mettiamo \(\alpha\) = 1
+
+\subsubsection{vediamo per quali valori di K abbiamo stabilitas et limitata outputitas}
+\label{sec:org00de219}
+
+una cosa che conviene mettere in un formulario è come sono messi i polinomii
+caratteristici e varie funzioni a seconda della legge di controllo
+
+per fare questa cosa vediamo il polimiomio caratteristico in ciclo chiuso
+trovata questa abbiamo \(a(s)\) e \(b(s)\), troviamo \(\phi\) *(s), bello bello
+al variare di K vediamo la stabilità di sto polinomio
+
+\(\phi\) *(s) è un polinomio di 3\textsuperscript{\circle} grado, quindi per studiare la stabilità facciamo
+routh-hourbiz (o come cazzo si scrive)
+
+visto che il guadagno in feedback è un parametro la difficoltà qui resta localizzata al
+fatto di dover lavorare con polinomii parametrici
+
+facciamo routh e applichiamo la condizione necessaria e sufficiente
+
+stabile \iff tutti gli elementi della prima colonna hanno lo stesso segno
+quindi \iff K > 0 \and 4K-1 > 0 \and \frac{4K^2 - 4K + 1}{K} > 0
+
+quidni questi,
+
+suppongo di avere K > 0, il rapporto potrebbe essere positivo se entrambi num e den sono >
+0 o sono entrambi < 0, ma qui sappiamo che il denominatore (K) deve essere positivo,
+quindi bla bla bla quindi tolgo il denominatore perchè tanto\ldots{}, quindi bla bla bla blero
+
+risolviamo il sistema, e amen.
+
+quindi va fatto uno studio parametrico sulla base del guadagno in feedback K.
+
+\subsubsection{Progettare, se possiblite K e H per avere inseguimento perfetto et al}
+\label{sec:orgf97c38f}
+
+perndiamo la retroazione sull'uscita,
+\[ u = -Ky ^ Hy^{\circle} \]
+vogliamo K e H in modo da avere inseguimento perfetto e stabilità asintotica
+
+vogliamo stabilità asintotica, visto prima, credo
+
+e vogliamo \(G* _{y^{\circle}y} (0)\) = 1, quindi troviamo \(G* _{y^{\circle}y} (0)\) in
+funzione di H e troviamo H giusto
+
+\[ G* _{y^{\circle}y} (s) = \frac{b(s)}{a(s) + Kb(s)} H \]
+
+abbiamo tutti gli ingredienti apparte H (K sarà un parametro, sticazzi), mettiamo che
+\(Puttanaio \rvert _{k=0} = 1\), vediamo l'H che lo soddisfa, e fatto, avremo una H in
+funzione di K che mi da inseguimento perfetto e belli belli.
+
+\subsubsection{Oh shit}
+\label{sec:org0d9fca2}
+
+Adesso abbiamo un riferimento non più costante ma sinusoidale, bisogna applicare il
+\emph{teorema della risposta in frequenza}
+
+applichiamo questo \emph{teorema della risposta in frequenza}
+
+$\backslash$[ y\textsubscript{f}\textsuperscript{Y}\textsubscript{0}(t) = 5(Re $\backslash${G* \_\{y\textsuperscript{\circle}y\} (j\(\omega\) \_0)$\backslash$} \(\sin\)(\(\omega\) \_0(t))
+\begin{itemize}
+\item Im$\backslash${G* \_\{y\textsuperscript{\circle}y\} (j\(\omega\) \_0)$\backslash$} \(\cos\)(\(\omega\) \_0(t))) 1(t) $\backslash$]
+\end{itemize}
+
+(o qualcosa del genere)
+
+la frequenza del riferimento costante è unitaria, quindi avremo la funzione di
+trasferimento per j\(\omega\) \_0 = j\(\omega\), la trovi e tanti saluti
+
+(l'esame lo passate anche se il conto coi numeri complessi non finisce bene, magari non
+prenderete 30 ma l'importante è impostarlo)
+
+quindi prendiamo la parte reale e la parte immaginaria della risposta in frequenza
+(\(G*_{y^{\circle}y}\)) e ci troviamo il regime permanente del sistema
+
+applico il teorema della risposta in frequenza e ci trovo\ldots{}
+a meno di errori di calcolo, ma il procedimento è questo
+\end{document}
