@@ -1,0 +1,30 @@
+#+TITLE: Sabilità sistemi non lineari
+#+AUTHOR: Res Cogitans, magno cum taedio
+
+(vuol dire che mi stavo annoiando molto, non fatevi strane idee)
+
+* Stabilità di un sistema non lineare
+
+per i sistemi non lineari la stabilità del sistema non è una cosa globale, come
+per i sistemi lineari, ma può variare e comportarsi da cosa locale, qui è
+stabile asintoticamente , qui parte, qui ha stabilità marginale, facile
+
+punti di equilibrio
+
+un punto di equilibrio è un punto tale che, se ci arrivi e l'input non si smuove
+da un certo coso, manco lo stato si smuove da quel certo posto
+
+è una combinazione di stato e input che può restare lì fissa tranquilla
+
+definiamo quindi come punto di equilibrion una coppia stato-ingresso tale che la
+derivata dello stato sia pari a 0
+
+un punto di equilibrio è una traiettoria costante del sistema
+
+l'uscita di equilibrio è l'uscita quando stato e ingresso sono in un punto di
+equilibrio, definizione neanche troppo complicata
+
+
+
+
+

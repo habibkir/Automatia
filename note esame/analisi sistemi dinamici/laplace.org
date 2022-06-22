@@ -1,0 +1,42 @@
+#+TITLE: Laplace
+#+AUTHOR: Tua madre
+#+DATE: Giovedì scorso 
+
+* Segnale causale
+
+Non esiste (= 0, per noi pezzenti) per $t < 0$
+
+* Definizione
+
+ecco la definizione
+
+** Casi notevoli
+
+casi notevoli sono
+
+*** Il gradino
+
+** Coso motliplicato per un esponenziale
+
+possiamo usare il prodotto per un esponenziale, con le formule di
+eulero, per fare
+
+*** Seno
+
+pari a
+
+*** Coseno
+
+pari a
+
+** Derivata
+
+e con questa facciamo
+
+*** Rampe
+
+La rampa unitaria fa
+
+La rampa quadratica fa
+
+In generale, la rampa con sto grado fa

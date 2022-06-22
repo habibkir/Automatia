@@ -1,0 +1,236 @@
+#+TITLE: Stabilità
+#+AUTHOR: Stocazzo
+#+LATEX_HEADER: \usepackage{amsfonts}
+#+LATEX_HEADER: \usepackage{mathtools}
+
+* Cazz'è ?
+
+Stabilità vuol dire robustezza di come va il sistema (traiettoria del
+sistema) rispetto a modifiche/ perturbazioni/ non essere propio esatto
+di:
+	* *Input*
+	* *Stato iniziale*
+	* *Il sistema stesso*
+
+Vale a dire di tutte le cose che possono influire sull'evoluzione/
+traiettoria/ chiamala come vuoi del sistema.
+
+In modo un po' più esatto sti cosi si chiamano:
+	* *Stabilità interna* : rispetto a varaizioni o scazzi dello stato
+          iniziale del sistema
+	* *Stabilità esterna* : rispetto a variazioni o scazzi dell'input
+          che arriva al sistema
+	* *Stabilità strutturale* : rispetto a variazioni o scazzi del
+          sistema stesso, com'è fatto (quindi per questo corso
+          rispetto alle classiche $A$, $B$, $C$, e $D$)
+
+* Stabilità interna
+** Tipi di stabilità
+	* *Stabilità asintotica* : Il contributo della perturbazione
+          sparisce, converge a 0
+	* *Stabilità marginale* : Il contributo della perturbazione
+          non va a 0, ma non diverge neanche
+	* *Instabilità* : Il contributo della perturbazione diverge
+
+** Mappa di transizione globale
+La mappa di transizione globale ($\Phi$) è una descrizione completa
+del comportamento sistema ottenuta buttandoci dentro tutto lo stato e
+gli input del sistema, vale a dire:
+
+\[\text{(t, stato iniziale, input) }
+\xRightarrow{\Phi} \text{ stato del sistema} \]
+
+questa viene usata per rendere un pochino più fattibile la discussione che segue
+visto che a dire costantemente /quello che fa se il sistema inizia così/,
+/quello che fa con la configurazione cosà/... si impazzisce tutti
+
+la mappa di transizione è una caratteristica propia del sistema, quindi se hai
+un sistema particolare
+
+\begin{cases}
+\dot{x}(t) &= Ax + Bu \\
+y(t) &= Cx + Du
+\end{cases}
+
+ti ritrovi, per quanto visto ora, con la mappa
+
+\[ \Phi (t,x_0,u) = e^{At}x_0 +
+\int_{0}^{t} e^{A(t-\tau)} Bu(\tau) d\tau \]
+
+** Stabilità interna
+
+Facciamo quindi che si studia la perturbazione rispetto allo stato
+iniziale, questa sarà pari a
+
+\[ \text{come va il sistema con $t$, $x_0 + \Delta x_0$, e $u$ (deviata)} -
+\text{come va il sistema con $t$, $x_0$, e $u$ (nominale)} \] 
+
+questa si può rappresentare con le mappe di transizione globale come
+
+\[ \Phi(t,x_0+ \Delta x_0 ,u) - \Phi(t,x_0 ,u) \]
+
+espandendo ste definizioni otteniamo
+
+\begin{align*}
+&e^{At}(x_0 + \Delta x_0) + \int_{0}^{t} e^{A(t-\tau)} bu(\tau) d\tau
+- (e^{At}x_0 + \int_{0}^{t} e^{A(t-\tau)} bu(\tau) d\tau) = \\
+& e^{At} \Delta x_0
+\end{align*}
+
+la perturbazione qui dipende solo da $A$ e da $\Delta x_0$, visto che allora il
+sistema si comporta sempre allo stesso modo per tutte le perturbazioni di stato
+iniziale possiamo parlare di *stabilità interna del sistema*
+
+Da tabellina avremo
+
+	* *Asintoticamente stabile* \iff $e^{At}x_0$ converge sempre, quindi
+	  \[\lim_{t \to \infty} e^{At} \Delta x_0 = 0\ \ \forall \Delta x_0\]
+	* *Marginalmente stabile* \iff $e^{At}x_0$ sempre limitato, quindi
+	  \[ \forall \Delta x_0\ \exists M :\
+	  \lvert \lvert\ e^{At}\ \rvert \rvert\ < M\ \forall\ t > 0 \]
+	* *Internamente Instabile* altrimenti, quindi se $\exists \Delta x_0$
+          che me lo fa esplodere in qualche modo
+
+** Con modi naturali
+
+ricordandoci che gli elemententi di $e^{At}$ sono combinazioni lineari dei *modi
+naturali del sistema* si ottiene che la stabilità interna dipende dai modi naturali
+
+Quindi
+	* *Stabilità asintotica* \iff tutto converge \iff tutti i modi convergenti
+	* *Stabilità marginale* \iff tutto limitatao \iff tutti i modi limitati
+	* *Instabilità interna* \iff almeno un modo divergente
+
+Qui gli autovalori del sistema sono gli autovalori della matrice, quindi	  
+	* *Stabilità asintotica* \iff tutti gli autovalori di $A$ parte reale < 0
+	* *Stabilità marginale* \iff tutto con parte reale \leq 0 *E* tutti quello
+          con parte reale = 0 hanno molteplicità = 1 come radici del polinomio minimo
+	* *Instabilità interna* \iff tutti gli altri casi, quindi \exists con
+          parte reale > 0 *O* \exists con parte reale = 0 e molteplicità > 1
+
+Per gli esercizi avremo
+	1. Trova $\varphi (s)$ polinomio caratteristico $= det(sI - A)$
+	2. Tutte radici < 0 ? asintoticamente stabile : continua
+	3. \exists radice di $\varphi (s)$ > 0 ? internamente instabile : continua
+	4. tutte radici con parte reale \leq 0
+	   tutte quelle con parte reale = 0 hanno molteplicità 1? marginalmente
+           stabile : continua
+	5. trova il polinomio minimo, qui quelle con parte reale = 0 hanno
+           molteplicità 1? marginale : instabile
+
+* Risposta forzata e funzione di trasferimento
+
+Al momento non sono provvisto di una quantità sufficiente di sbatti
+per portare a compimento la scrittura della seguente sezinoe
+
+* Criterii algebrici per la stabilità
+
+Abbiamo qualche rapporto tra stabilità e segni delle radici, in particolare
+abbiamo visto che:
+
+	* Stabilità asintotica \iff tutte le radici di $\varphi (s)$ con Re < 0
+	* Stabilità esterna \iff tutte $a(s)$ con Re < 0
+
+Capire che radici ha un polinomio può non essere facilissimo
+capire se sono tutte minori di 0 di solito è meno complicato
+
+** Condizione necessaria e cartesio
+
+le radici hanno Re < 0 \to tutti i coefficienti sono non nulli e dello stesso
+segno
+
+per i polinomii di gradi 2 questa condizione è necessaria *e sufficiente*,
+questa \iff aggine si chiama *Regola di Cartesio*
+
+*** Come la uso
+
+per $n \leq 2$ ci butti quella e hai già fatto l'esercizio, almeno per quanto
+riguarda il segno delle radici
+
+per $n > 2$ la possiamo usare come passo preliminare, se non passi quella non
+passi e basta, quindi instabilità, per andare oltre si usa Routh Hurwitz
+
+** Tabella di Routh
+
+fai una tabella
+
+Criterio di Routh Hurwitz dice che
+
+Tutte radici con Re < 0 \iff tutti gli elementi della prima colonna della
+tabella sono nonnulli con lo stesso segno
+
+Generalizzazione di regola di Cartesio
+
+Coso sopra, i due sopra, i due a destra destra
+
+* Rappresentazione Ingresso Uscita (Battistelli.io)
+
+wee wee wa we weee
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

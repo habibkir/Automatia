@@ -1,0 +1,166 @@
+% Created 2022-06-21 Tue 13:38
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{amsfonts}
+\date{\today}
+\title{}
+\hypersetup{
+ pdfauthor={},
+ pdftitle={},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 28.1 (Org mode 9.5.2)}, 
+ pdflang={English}}
+\begin{document}
+
+\tableofcontents
+
+Fonti usate: 
+
+esercizii di riepilogo (non ha pubblicato un programma, che io sappia)
+e/o slide e/o la cazzo di cane
+
+\section{Trasformata Laplace}
+\label{sec:orgf05aa9c}
+\begin{itemize}
+\item Definzione
+\[\mathcal{L}\{f(t)\} = \int_{0}^{\infty} f(t) e^{-st} dt = F(s)\]
+\end{itemize}
+
+\subsection{Teoremi}
+\label{sec:org1018507}
+\begin{itemize}
+\item Ritardo
+\[\mathcal{L}\{e^{\lambda t}f(t)\} = F(s-\lambda)\]
+\end{itemize}
+
+\subsection{Notevoli}
+\label{sec:orge9fbadc}
+\begin{itemize}
+\item Gradino (ricavi con definizione)
+\[ \mathcal{L}\{1(t)\} = \frac{1}{s} \]
+\item Esponenziale causale (ricavi col teorema del ritardo)
+\[ \mathcal{L}\{e^{\lambda t} 1(t)\} = \frac{1}{s- \lambda} \]
+\item Seno causale (ricavi con l'esponenziale)
+\[ \mathcal{L}\{\sin(\omega _0 t) 1(t)\} = \frac{\omega _0}{s^2 + \omega _0 ^2} \]
+\item Coseno causale (ricavi con l'esponenziale)
+\[ \mathcal{L}\{\cos(\omega _0 t) 1(t)\} = \frac{s}{s^2 + \omega _0 ^2} \]
+\item Impulso di dirac (ricavi con definizione) (usata per funzioni semplicemente proprie)
+\[ \mathcal{L}\{\delta (t)\} = 1 \]
+\item Rampa unitaria (ricavi prodotto per t) (usata per poli nulli a molteplicità 2)
+\item Rampa parabolica (ricavi prodotto per t) (usata per poli nulli a molteplicità 3)
+\item Esponenziale \texttimes{} monomoio (usata per poli non nulli a molteplicità multipla)
+\end{itemize}
+
+
+\section{Antitrasformata laplace / Analisi modale}
+\label{sec:orgbf9fcc9}
+\subsection{Residui}
+\label{sec:org58ff083}
+
+\subsection{Risposta per poli\ldots{}}
+\label{sec:org66c52a8}
+\begin{itemize}
+\item Reali 
+Modo naturale \(e^{polo\ t}\), con \(t \geq 0\)
+\item Complessi coniugati \(\sigma \pm j\omega\) (I complessi sono per forza coniugati qui)
+Detti:
+\begin{itemize}
+\item \(K\) e \(\overline{K}\) i residui corrispondenti ai poli, che saranno coniugati complessi
+\item \(\alpha\) e \(\beta\) le parti reali e immaginarie di \(K\)
+(o \(\overline{K}\) tanto la formula torna lo stesso)
+\end{itemize}
+\[ e^{\sigma t} (2 \alpha \cos(\omega t) - 2 \beta \sin(\omega t)) 1(t) \]
+\end{itemize}
+
+\subsection{Poli a molteplicità multipla}
+\label{sec:org72c26c6}
+\begin{itemize}
+\item Reali con molteplicità \(l\)
+Modi naturali \(1(t)\), \(t 1(t)\), \ldots{}, \(t^{l-1} 1(t)\)
+\item Complessi coniugati com molteplicità \(l\)
+Modi nautrali (da rivedere)
+\end{itemize}
+
+
+\section{Sistemi LTI TC}
+\label{sec:orga8b4b24}
+\begin{itemize}
+\item Definizione:
+\[\begin{cases}
+	  \dot{x}(t) &= Ax(t) + Bu(t) \\
+	  y(t) &= Cx(t) + Du(t)
+	  \end{cases} \]
+per i sistemi SISO (Single Input, Single Output) \(B\) è un vettore colonna,
+\(C\) è un vettore riga, \(D \in \mathbb{R}\)
+\end{itemize}
+
+\subsection{Evoluzione stato e uscita}
+\label{sec:orgfd1d506}
+\subsubsection{Evoluzioni nel tempo}
+\label{sec:orgb4d76c9}
+\begin{itemize}
+\item Evoluzione stato nel tempo
+\begin{itemize}
+\item libera
+\[x_l (t) = e^{At} x_0\]
+\item forzata
+\[x_f (t) = \int_{0}^{t} e^{A(t-\tau)} Bu(\tau) d \tau\]
+\item complessiva
+\[ x(t) = x_l (t) + x_l (t) =
+	    e^{At} x_0 + \int_{0}^{t} e^{A(t-\tau)} Bu(\tau) d \tau \]
+\end{itemize}
+
+\item Evoluzione uscita nel tempo
+\begin{itemize}
+\item libera
+\[y_l (t) = C x_l (t) = Ce^{At} x_0\]
+\item forzata
+\[y_l (t) = C x_f (t) + D u(t) =
+	    \int_{0}^{t} C e^{A(t-\tau)} Bu(\tau) d \tau + D u(t) \]
+\item complessiva
+\[y(t) = y_l (t) + y_f (t) = C e^{At} x_0 +
+	    \int_{0}^{t} C e^{A(t-\tau)} Bu(\tau) d \tau + D u(t) \]
+\end{itemize}
+\end{itemize}
+\subsubsection{Evoluzioni in Laplace}
+\label{sec:orgedad21f}
+\begin{itemize}
+\item Evoluzione stato nel tempo
+\begin{itemize}
+\item libera
+\[X_l (s) = \mathcal{L} \{e^{At} x_0\} = (sI - A)^{-1} x_0\]
+\item forzata
+\[X_f (s) = (sI - A)^{-1} BU(s)\]
+\item complessiva
+\[X(s) = X_l (s) + X_f (s) =
+	    (sI - A)^{-1} x_0 + (sI - A)^{-1} BU(s) \]
+\end{itemize}
+
+\item Evoluzione uscita nel tempo
+\begin{itemize}
+\item libera
+\[Y_l (s) = C X_l (s) = C(sI - A)^{-1} x_0\]
+\item forzata
+\[Y_f (s) = C X_f (s) + D U(s) = C(sI - A)^{-1} BU(s) + DU(s)\]
+\item complessiva
+\[Y(s) = Y_l (s) + Y_f (s) =
+	    C(sI - A)^{-1} x_0 + C(sI - A)^{-1} BU(s) + DU(s) \]
+\end{itemize}
+\end{itemize}
+
+\subsubsection{Funzione di trasferimento}
+\label{sec:org8c89da3}
+\[G(s) = \frac{Y_f(s)}{U(s)} = C(sI-A)^{-1}B + D\]
+\end{document}

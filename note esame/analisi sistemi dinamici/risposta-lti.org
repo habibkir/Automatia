@@ -1,0 +1,147 @@
+#+LATEX_HEADER: \usepackage{amsfonts}
+
+* LTI TD
+
+abbiamo un sistema tempo-discreto descritto dalle solite equazioni per
+lo stato e uscita
+
+\begin{align*}
+&x(t+1) = f(t,x(t),u(t)) \\
+&y(t) = h(t,x(t),u(t)) \\
+\end{align*}
+
+Dato il titolo di questa sottosezione sappiamo che il sistema TD è
+LTI, lineare-tempo-invariante, quindi
+
+\begin{align*}
+&x(t+1) = f(x(t),u(t)) \\
+&y(t) = h(x(t),u(t)) \\
+\end{align*}
+
+con $f(t)$ e $h(t)$ funzioni lineari di f e u, vale a dire
+
+\begin{align*}
+&x(t+1) = Ax(t) + Bu(t) \\
+&y(t) = Cx(t) + Du(t) \\
+\end{align*}
+
+con $A$, $B$, $C$, e $D$ matrici di qualisiasi dimensione faccia
+tornare il problema.
+
+Lo scopo di questa sottosezione è: \\
+\textit{Abbiamo lo stato, diciamo che ho anche l'input, se come varia
+lo stato con stato e input allora so come varia lo stato in generale,
+
+se diciamo di avere anche lo stato iniziale allora ho tutti gli stati
+se ho tutti gli stati e so come va l'uscita allora ho tutto,
+\emph{ANALISI SISTEMI BOIII}}
+
+** Formule et al
+Andando di
+
+\begin{align*}
+&x(t+1) = Ax(t) + Bu(t) \\
+&y(t) = Cx(t) + Du(t) \\
+\end{align*}
+
+Per qualche passo ci si ritrova con
+%TODO
+\[
+\text{mi fa fatica scriverlo in latex, facciamo dopo, ok?[fn::Non lo
+fece dopo]
+\]
+Visto che qui siamo /lineari/ questo può essere diviso in 2
+parti, che si sommano tra di loro
+	* La parte a cui non interessa l'input
+	* La parte a cui interessa l'input
+	  
+Si può agire in modo simile anche per l'uscita, ottenendo una forma
+complessiva del sistema nella seguente forma
+%TODO
+\[
+\text{mi fa fatica farlo ora}
+\]
+
+Queste si dicono rispettivamente *risposta libera* e *risposta
+forzata* e avranno le forme /non mi va di farlo ora in latex/ e /non
+mi va di farlo ora in latex/
+
+** Risposte libere e forzate
+
+Evoluzione libera detta anche /a ingresso nullo/, visto che è quello
+che verrebbe fuori se l'input fosse nullo, quindi senza un cazzo di
+contributo\par
+
+L' evoluzione forzata è detta anche /nello stato zero/,
+visto che è quello che verrebbe fuori se lo stato iniziale (e tutti i
+successivi, data la linearità) fosse nullo, e non desse quindi alcun
+contributo (mi sono scordato i conguingivi in seconda media, pardon)
+
+Per la risposta hai la risposta libera, o /evoluzione libera
+dell'uscita/, e la risposta forzata, o /evoluzione forzata
+dell'uscita/\par
+
+Se vuoi sembrare figo puoi dire /principio di sovrapposizione degli
+effetti/ invece di /conseguenze grazialcazzo della
+linearità/
+
+** Conseguenze grazialcazzo della linearità, TD
+
+fai finta che abbia scritto qualcosa
+
+* LTI TC
+
+un sistema LTI TC si descrive con
+
+%NOTA BENE, questa cosa potrebbe fotterti pdflatex, perchè non ricordo
+%come cazzo si usa l'ambiente /cases/
+
+\begin{equation*}
+\begin{cases}
+\dot{x}(t) = Ax(t) + Bu(t) & \\
+\y(t) = Cx(t) + Du(t) & \\
+\end{cases}
+\end{equation*}
+
+abbiamo la condizione iniziale, abbiamo l'input, facciamo il solito.
+
+Qui le cose si fanno un pochino complicate, per semplicità
+consideriamo il caso autonomo con una sola dimensione[fn::sferico, nel
+vuoto, e senza effetti relativistici]
+quindi, con $x(t) \in \mathbb{R}$ e $a \in \mathbb{R}$, si ottiene
+
+\[\dot{x}(t) = ax(t) \]
+per non far arrabbiare i matematci tra i telespettatori possimao
+specificare una condizione iniziale
+\[x(0) = x_0 \]
+essendo un'equazione differenziale di analisi 1 la risposta è $e$, in
+particolare
+\[x(t) = e^{at} x_0\]
+Magnifico e tutto, ma come faccio se ho una matrice? In situazioni
+come queste è necessario ricordarsi che /la matematica è una materia
+in cui scopri cose nuove inventandoti merdate a caso/
+
+** Abusi di notazione
+La scoperta del numero $e$ è stata fatta abbastanza ad hoc per
+problemi di derivate & Co.
+%TODO aggiungi una spiegazione e/o (magari e) metti il link per il
+%video di 3b1b
+
+** Roba
+qui mette i modi naturali, gli introduce in modo umano, bla bla bla
+diagonalizzazione e da il contesto per sì e no il 70% dei calcoli
+fatti in questo corso, rivediti sta roba BENE, ma BENE, ma tanto BENE.
+
+
+
+
+
+
+
+
+
+
+
+
+
+

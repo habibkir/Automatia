@@ -1,0 +1,100 @@
+#+LATEX_HEADER: \usepackage{amsfonts}
+Fonti usate: 
+
+esercizii di riepilogo (non ha pubblicato un programma, che io sappia)
+e/o slide e/o la cazzo di cane
+
+* Trasformata Laplace
+	* Definzione
+	  \[\mathcal{L}\{f(t)\} = \int_{0}^{\infty} f(t) e^{-st} dt = F(s)\]
+
+** Teoremi
+	* Ritardo
+	  \[\mathcal{L}\{e^{\lambda t}f(t)\} = F(s-\lambda)\]
+
+** Notevoli
+	* Gradino (ricavi con definizione)
+	  \[ \mathcal{L}\{1(t)\} = \frac{1}{s} \]
+	* Esponenziale causale (ricavi col teorema del ritardo)
+	  \[ \mathcal{L}\{e^{\lambda t} 1(t)\} = \frac{1}{s- \lambda} \]
+	* Seno causale (ricavi con l'esponenziale)
+	  \[ \mathcal{L}\{\sin(\omega _0 t) 1(t)\} = \frac{\omega _0}{s^2 + \omega _0 ^2} \]
+	* Coseno causale (ricavi con l'esponenziale)
+	  \[ \mathcal{L}\{\cos(\omega _0 t) 1(t)\} = \frac{s}{s^2 + \omega _0 ^2} \]
+	* Impulso di dirac (ricavi con definizione) (usata per funzioni semplicemente proprie)
+	  \[ \mathcal{L}\{\delta (t)\} = 1 \]
+	* Rampa unitaria (ricavi prodotto per t) (usata per poli nulli a molteplicità 2)
+	* Rampa parabolica (ricavi prodotto per t) (usata per poli nulli a molteplicità 3)
+	* Esponenziale \times monomoio (usata per poli non nulli a molteplicità multipla)
+
+
+* Antitrasformata laplace / Analisi modale
+** Residui
+
+** Risposta per poli...
+	* Reali 
+	  Modo naturale $e^{polo\ t}$, con $t \geq 0$
+	* Complessi coniugati $\sigma \pm j\omega$ (I complessi sono per forza coniugati qui)
+	   Detti:
+	  * $K$ e $\overline{K}$ i residui corrispondenti ai poli, che saranno coniugati complessi 
+	  * \alpha e \beta le parti reali e immaginarie di $K$
+	    (o $\overline{K}$ tanto la formula torna lo stesso)
+	  \[ e^{\sigma t} (2 \alpha \cos(\omega t) - 2 \beta \sin(\omega t)) 1(t) \]
+
+** Poli a molteplicità multipla
+	* Reali con molteplicità $l$
+	  Modi naturali $1(t)$, $t 1(t)$, ..., $t^{l-1} 1(t)$ 
+	* Complessi coniugati com molteplicità $l$
+	  Modi nautrali (da rivedere) 
+
+
+* Sistemi LTI TC
+	* Definizione:
+	  \[\begin{cases}
+	  \dot{x}(t) &= Ax(t) + Bu(t) \\
+	  y(t) &= Cx(t) + Du(t)
+	  \end{cases} \]
+	  per i sistemi SISO (Single Input, Single Output) $B$ è un vettore colonna,
+	  $C$ è un vettore riga, $D \in \mathbb{R}$
+
+** Evoluzione stato e uscita
+*** Evoluzioni nel tempo
+	* Evoluzione stato nel tempo
+	  * libera
+	    \[x_l (t) = e^{At} x_0\]
+	  * forzata
+	    \[x_f (t) = \int_{0}^{t} e^{A(t-\tau)} Bu(\tau) d \tau\]
+	  * complessiva
+	    \[ x(t) = x_l (t) + x_l (t) =
+	    e^{At} x_0 + \int_{0}^{t} e^{A(t-\tau)} Bu(\tau) d \tau \]
+
+	* Evoluzione uscita nel tempo
+	  * libera
+	    \[y_l (t) = C x_l (t) = Ce^{At} x_0\]
+	  * forzata
+	    \[y_l (t) = C x_f (t) + D u(t) =
+	    \int_{0}^{t} C e^{A(t-\tau)} Bu(\tau) d \tau + D u(t) \]
+	  * complessiva
+	    \[y(t) = y_l (t) + y_f (t) = C e^{At} x_0 +
+	    \int_{0}^{t} C e^{A(t-\tau)} Bu(\tau) d \tau + D u(t) \]
+*** Evoluzioni in Laplace
+	* Evoluzione stato nel tempo
+	  * libera
+	    \[X_l (s) = \mathcal{L} \{e^{At} x_0\} = (sI - A)^{-1} x_0\]
+	  * forzata
+	    \[X_f (s) = (sI - A)^{-1} BU(s)\]
+	  * complessiva
+	    \[X(s) = X_l (s) + X_f (s) =
+	    (sI - A)^{-1} x_0 + (sI - A)^{-1} BU(s) \]
+
+	* Evoluzione uscita nel tempo
+	  * libera
+	    \[Y_l (s) = C X_l (s) = C(sI - A)^{-1} x_0\]
+	  * forzata
+	    \[Y_f (s) = C X_f (s) + D U(s) = C(sI - A)^{-1} BU(s) + DU(s)\]
+	  * complessiva
+	    \[Y(s) = Y_l (s) + Y_f (s) =
+	    C(sI - A)^{-1} x_0 + C(sI - A)^{-1} BU(s) + DU(s) \]
+	    
+*** Funzione di trasferimento
+\[G(s) = \frac{Y_f(s)}{U(s)} = C(sI-A)^{-1}B + D\]

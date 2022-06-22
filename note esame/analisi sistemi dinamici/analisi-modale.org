@@ -1,0 +1,69 @@
+#+LATEX_HEADER: \usepackage{amsfonts}
+* Ripassino Laplacino
+
+** Definizione
+\[\mathcal{L}\{f(t)\} = \int_{0}^{\infty} f(t) e^{-st} dt \]
+con $s$ variabile complessa generica, di forma $\sigma + j\omega$ con
+\sigma e \omega \in \mathbb{R}
+
+e si usa $F(s)$ per indicare $\mathcal{L}\{f(t)\}$, convenzione
+ripresa dal caro vecchio $F = \int f$.
+
+** Cosi notevoli
+
+I cosi notevoli si ricavano con due componenti
+	* Trasformata del gradino unitario
+	* Abuso di varie proprietà del cazzo
+
+Le trasformate che vogliamo ricavare sono le seguenti
+	* \textbf{Gradino} (tutto è causale, tutto viene dal gradino)
+	* \textbf{Esponenziale} (è una trasformata, che t'aspetti?)
+	* \textbf{Seni e coseni} (hai l'esponenziale, che t'aspetti?)
+	* \textbf{Polinomii}
+	* \textbf{Funzioni razionali}
+
+L'esponenziale & Co. sarà ricavato con i soliti teoremi da
+esponenziale (mi spiace)
+
+Per i polinomii & Co.
+
+*** Gradino unitario
+
+\[ \frac{1}{s} \]
+
+
+e ora, a chi volesse un flashback dell'Argenti
+
+*** Linearità
+
+Grazialcazzo
+
+*** Traslazione in frequenza
+
+da questa si ricava
+
+*** Esponenziale
+
+abbiamo un esponenziale complesso, abbiamo la linearità, indovina un
+po'? Abbiamo
+
+*** Seni e coseni
+
+*** Derivazione in frequenza
+
+Con questa si può iniziare a scazzare con polinomii, si ricavano
+intanto i monomii in Laplace, poi linearità \to grazialcazzo
+
+*** Rampa unitaria
+
+*** Rampa non unitaria
+
+*** Derivazione nel tempo
+
+*** Integrazione
+
+E ora, al fine di massimizzare il flashback argentialno
+
+*** Convoluzione nel tempo
+
+*** Impulso di Dirac
