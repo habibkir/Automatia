@@ -1,0 +1,18 @@
+* Osservatore
+
+la retroazione sullo stato è molto più maneggiabile di una retroazione
+sull'uscita, quindi si potrebbe fare una retroazione su una /stima/
+dello stato ottenuta con ingresso e uscita, magari è più maneggiabile
+di una retorazione sull'uscita più "vanilla"
+
+l'osservatore è un sistema dinamico con input $u(t)$ e $y(t)$ e come
+output $\hat{x}(t)$, si progetta l'osservatore in modo che
+$\hat{x}(t)$ tenda a $x(t)$ il più velocemente possibile
+
+** Osservatore di Luenberger
+
+prendi il coso che si evolve come $x$ normale con un termine per
+l'errore di inseguimento, visto che non hai l'errore di inseguimento
+allora fai una copia mezza sputata dell'errore di inseguimento usando
+lo stato che hai e l'uscita, usi quella e qualche parametro e bam!
+Errore di inseguimento.

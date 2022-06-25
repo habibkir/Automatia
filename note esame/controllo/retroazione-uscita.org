@@ -41,8 +41,7 @@ modificare $X_f (s)$ vede questi autovalori.
 gli autovalori osservabili sono quelli che hanno un'effetto visibile
 sull'uscita, l'uscita è
 
-\[ Y(s) = C(sI-A)^{-1}x(0) \text{ (libera) }
-+ C(sI-A)^{-1}BU(S) \text{ (forzata)} \]
+\[ Y(s) = C(sI-A)^{-1}x(0) \text{ (libera) } + C(sI-A)^{-1}BU(S) \text{ (forzata)} \]
 
 Qui quelli che non partono quando faccio $C(sI-A)^{-1}$ sono quelli
 che avranno un effetto visibile sull'uscita, quindi quelli osservabili

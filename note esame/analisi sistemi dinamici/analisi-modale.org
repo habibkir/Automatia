@@ -4,7 +4,7 @@
 ** Definizione
 \[\mathcal{L}\{f(t)\} = \int_{0}^{\infty} f(t) e^{-st} dt \]
 con $s$ variabile complessa generica, di forma $\sigma + j\omega$ con
-\sigma e \omega \in \mathbb{R}
+\sigma e \omega \in $\mathbb{R}$
 
 e si usa $F(s)$ per indicare $\mathcal{L}\{f(t)\}$, convenzione
 ripresa dal caro vecchio $F = \int f$.

@@ -23,7 +23,7 @@ facciamo sta scomposizione
 non ha poli in 0 a rovinarci tutto\par
 
 $\frac{K_0}{s}$ è l'unico elemento di questa formula con
-\mathcal{L}^{-1} che non tende a 0, quindi vediamo quanto fa, per il
+$\mathcal{L}^{-1}$ che non tende a 0, quindi vediamo quanto fa, per il
 teorema dei residui :
 
 \begin{align*}

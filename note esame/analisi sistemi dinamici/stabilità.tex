@@ -1,0 +1,224 @@
+% Created 2022-06-25 Sat 11:34
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\author{Stocazzo}
+\date{\today}
+\title{Stabilità}
+\hypersetup{
+ pdfauthor={Stocazzo},
+ pdftitle={Stabilità},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 28.1 (Org mode 9.5.2)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+
+\section{Cazz'è ?}
+\label{sec:org0136295}
+
+Stabilità vuol dire robustezza di come va il sistema (traiettoria del
+sistema) rispetto a modifiche/ perturbazioni/ non essere propio esatto
+di:
+\begin{itemize}
+\item \textbf{Input}
+\item \textbf{Stato iniziale}
+\item \textbf{Il sistema stesso}
+\end{itemize}
+
+Vale a dire di tutte le cose che possono influire sull'evoluzione/
+traiettoria/ chiamala come vuoi del sistema.
+
+In modo un po' più esatto sti cosi si chiamano:
+\begin{itemize}
+\item \textbf{Stabilità interna} : rispetto a varaizioni o scazzi dello stato
+iniziale del sistema
+\item \textbf{Stabilità esterna} : rispetto a variazioni o scazzi dell'input
+che arriva al sistema
+\item \textbf{Stabilità strutturale} : rispetto a variazioni o scazzi del
+sistema stesso, com'è fatto (quindi per questo corso
+rispetto alle classiche \(A\), \(B\), \(C\), e \(D\))
+\end{itemize}
+
+\section{Stabilità interna}
+\label{sec:orgd9a4210}
+\subsection{Tipi di stabilità}
+\label{sec:org03e41ad}
+\begin{itemize}
+\item \textbf{Stabilità asintotica} : Il contributo della perturbazione
+sparisce, converge a 0
+\item \textbf{Stabilità marginale} : Il contributo della perturbazione
+non va a 0, ma non diverge neanche
+\item \textbf{Instabilità} : Il contributo della perturbazione diverge
+\end{itemize}
+
+\subsection{Mappa di transizione globale}
+\label{sec:orgd8c689f}
+La mappa di transizione globale (\(\Phi\)) è una descrizione completa
+del comportamento sistema ottenuta buttandoci dentro tutto lo stato e
+gli input del sistema, vale a dire:
+
+\[\text{(t, stato iniziale, input) }
+\xRightarrow{\Phi} \text{ stato del sistema} \]
+
+questa viene usata per rendere un pochino più fattibile la discussione che segue
+visto che a dire costantemente \emph{quello che fa se il sistema inizia così},
+\emph{quello che fa con la configurazione cosà}\ldots{} si impazzisce tutti
+
+la mappa di transizione è una caratteristica propia del sistema, quindi se hai
+un sistema particolare
+
+\begin{cases}
+\dot{x}(t) &= Ax + Bu \\
+y(t) &= Cx + Du
+\end{cases}
+
+ti ritrovi, per quanto visto ora, con la mappa
+
+\[ \Phi (t,x_0,u) = e^{At}x_0 +
+\int_{0}^{t} e^{A(t-\tau)} Bu(\tau) d\tau \]
+
+\subsection{Stabilità interna}
+\label{sec:org778ad8d}
+
+Facciamo quindi che si studia la perturbazione rispetto allo stato
+iniziale, questa sarà pari a
+
+\[ \text{come va il sistema con $t$, $x_0 + \Delta x_0$, e $u$ (deviata)} -
+\text{come va il sistema con $t$, $x_0$, e $u$ (nominale)} \] 
+
+questa si può rappresentare con le mappe di transizione globale come
+
+\[ \Phi(t,x_0+ \Delta x_0 ,u) - \Phi(t,x_0 ,u) \]
+
+espandendo ste definizioni otteniamo
+
+\begin{align*}
+&e^{At}(x_0 + \Delta x_0) + \int_{0}^{t} e^{A(t-\tau)} bu(\tau) d\tau
+- (e^{At}x_0 + \int_{0}^{t} e^{A(t-\tau)} bu(\tau) d\tau) = \\
+& e^{At} \Delta x_0
+\end{align*}
+
+la perturbazione qui dipende solo da \(A\) e da \(\Delta x_0\), visto che allora il
+sistema si comporta sempre allo stesso modo per tutte le perturbazioni di stato
+iniziale possiamo parlare di \textbf{stabilità interna del sistema}
+
+Da tabellina avremo
+
+\begin{itemize}
+\item \textbf{Asintoticamente stabile} \iff \(e^{At}x_0\) converge sempre, quindi
+\[\lim_{t \to \infty} e^{At} \Delta x_0 = 0\ \ \forall \Delta x_0\]
+\item \textbf{Marginalmente stabile} \iff \(e^{At}x_0\) sempre limitato, quindi
+\[ \forall \Delta x_0\ \exists M :\
+	  \lvert \lvert\ e^{At}\ \rvert \rvert\ < M\ \forall\ t > 0 \]
+\item \textbf{Internamente Instabile} altrimenti, quindi se \(\exists \Delta x_0\)
+che me lo fa esplodere in qualche modo
+\end{itemize}
+
+\subsection{Con modi naturali}
+\label{sec:org3ddfb51}
+
+ricordandoci che gli elemententi di \(e^{At}\) sono combinazioni lineari dei \textbf{modi
+naturali del sistema} si ottiene che la stabilità interna dipende dai modi naturali
+
+Quindi
+\begin{itemize}
+\item \textbf{Stabilità asintotica} \iff tutto converge \iff tutti i modi convergenti
+\item \textbf{Stabilità marginale} \iff tutto limitatao \iff tutti i modi limitati
+\item \textbf{Instabilità interna} \iff almeno un modo divergente
+\end{itemize}
+
+Qui gli autovalori del sistema sono gli autovalori della matrice, quindi	  
+\begin{itemize}
+\item \textbf{Stabilità asintotica} \iff tutti gli autovalori di \(A\) parte reale < 0
+\item \textbf{Stabilità marginale} \iff tutto con parte reale \(\le\) 0 \textbf{E} tutti quello
+con parte reale = 0 hanno molteplicità = 1 come radici del polinomio minimo
+\item \textbf{Instabilità interna} \iff tutti gli altri casi, quindi \(\exists\) con
+parte reale > 0 \textbf{O} \(\exists\) con parte reale = 0 e molteplicità > 1
+\end{itemize}
+
+Per gli esercizi avremo
+\begin{enumerate}
+\item Trova \(\varphi (s)\) polinomio caratteristico \(= det(sI - A)\)
+\item Tutte radici < 0 ? asintoticamente stabile : continua
+\item \(\exists\) radice di \(\varphi (s)\) > 0 ? internamente instabile : continua
+\item tutte radici con parte reale \(\le\) 0
+tutte quelle con parte reale = 0 hanno molteplicità 1? marginalmente
+stabile : continua
+\item trova il polinomio minimo, qui quelle con parte reale = 0 hanno
+molteplicità 1? marginale : instabile
+\end{enumerate}
+
+\section{Risposta forzata e funzione di trasferimento}
+\label{sec:orgc58d54b}
+
+Al momento non sono provvisto di una quantità sufficiente di sbatti
+per portare a compimento la scrittura della seguente sezinoe
+
+\section{Criterii algebrici per la stabilità}
+\label{sec:org3546042}
+
+Abbiamo qualche rapporto tra stabilità e segni delle radici, in particolare
+abbiamo visto che:
+
+\begin{itemize}
+\item Stabilità asintotica \iff tutte le radici di \(\varphi (s)\) con Re < 0
+\item Stabilità esterna \iff tutte \(a(s)\) con Re < 0
+\end{itemize}
+
+Capire che radici ha un polinomio può non essere facilissimo
+capire se sono tutte minori di 0 di solito è meno complicato
+
+\subsection{Condizione necessaria e cartesio}
+\label{sec:org49dcdea}
+
+le radici hanno Re < 0 \(\to\) tutti i coefficienti sono non nulli e dello stesso
+segno
+
+per i polinomii di gradi 2 questa condizione è necessaria \textbf{e sufficiente},
+questa \iff aggine si chiama \textbf{Regola di Cartesio}
+
+\subsubsection{Come la uso}
+\label{sec:org509b6f0}
+
+per \(n \leq 2\) ci butti quella e hai già fatto l'esercizio, almeno per quanto
+riguarda il segno delle radici
+
+per \(n > 2\) la possiamo usare come passo preliminare, se non passi quella non
+passi e basta, quindi instabilità, per andare oltre si usa Routh Hurwitz
+
+\subsection{Tabella di Routh}
+\label{sec:org366ac0b}
+
+fai una tabella
+
+Criterio di Routh Hurwitz dice che
+
+Tutte radici con Re < 0 \iff tutti gli elementi della prima colonna della
+tabella sono nonnulli con lo stesso segno
+
+Generalizzazione di regola di Cartesio
+
+Coso sopra, i due sopra, i due a destra destra
+
+\section{Rappresentazione Ingresso Uscita (Battistelli.io)}
+\label{sec:org58cfd75}
+
+wee wee wa we weee
+\end{document}

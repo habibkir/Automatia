@@ -1,0 +1,78 @@
+% Created 2022-06-25 Sat 11:19
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\date{\today}
+\title{}
+\hypersetup{
+ pdfauthor={},
+ pdftitle={},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 28.1 (Org mode 9.5.2)}, 
+ pdflang={English}}
+\begin{document}
+
+\tableofcontents
+
+\section{Regimi transitorii e permanenti}
+\label{sec:orge662209}
+Definita la risposta forzata si divide l'uscita forzata in due parti
+\[y_f (t) = \mathcal{L}^{-1} \{G(s) U(s)\} = y_f^G(t) + y_f^U(t)\]
+dove \(y_f^G (t)\) viene dai fratti semplici coi poli presi da G e
+\(y_f^G (t)\) viene dai fratti semplici coi poli presi da U.
+
+Se il sistema è esternamente stabile allora tutti i modi di \(G(s)\)
+sono convergenti (poli con \(Re < 0\)), per questo \(y_g^G (t)\) è detta
+risposta \emph{transitoria} del sistema, quello che resta allora sarà la
+parte con i modi che non sono tutti convergenti, vale a dire quella
+che ha i modi naturali presi dai poli di \(U(s)\) e si dice per
+l'appunto risposta \emph{permanente} del sistema, i due casi più importanti
+sono:
+\begin{itemize}
+\item \(u(t)\) pari a \(u_0 1(t)\)
+\item \(u(t)\) pari a \(U_0 sin(\omega _0)\)
+\end{itemize}
+
+\subsection{Ingresso costante / gradino}
+\label{sec:org358aea2}
+
+facciamo sta scomposizione
+\[ Y(s) = G(s) U(s) = Y_f^U(s) + Y_f^G(s)
+=\frac{K_0}{s} + \text{roba che tanto } \to 0\]
+è importante notare che il secondo termine \(\to 0\) solo quando \(G(s)\)
+non ha poli in 0 a rovinarci tutto\par
+
+\(\frac{K_0}{s}\) è l'unico elemento di questa formula con
+\(\mathcal{L}^{-1}\) che non tende a 0, quindi vediamo quanto fa, per il
+teorema dei residui :
+
+\begin{align*}
+K_0 &= \lim_{s \to 0} sY(s) \\
+&= \lim_{s \to 0} s G(s) U(s)\\
+&= \lim_{s \to 0} s G(s) \frac{U_0}{s}
+\end{align*}
+
+Per ipotesi abbiamo detto che \(G(s)\) non ha poli in 0, quindi non
+esplode niente, risulta allora
+
+\begin{align*}
+K_0 &= \lim_{s \to 0} G(s) U_0 \\
+&= U_0 G(0)
+\end{align*}
+
+che ci porta a
+
+\[ Y_f (s) = \frac{K_0}{s} + \text{ roba che} \to 0 =
+\frac{G(0)U_0}{s} + \text{ roba che} \to 0\]
+\end{document}

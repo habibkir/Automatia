@@ -1,4 +1,4 @@
-% Created 2022-06-17 Fri 11:18
+% Created 2022-06-25 Sat 11:16
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -27,19 +27,19 @@
 \tableofcontents
 
 \section{Ripassino Laplacino}
-\label{sec:org0bac5bd}
+\label{sec:org144fa91}
 
 \subsection{Definizione}
-\label{sec:orgf46f581}
-\[\mathcal{L}\{f(t)\} = \int_{-\infty}^{\infty} f(t) e^{-st} dt \]
+\label{sec:orgab5d198}
+\[\mathcal{L}\{f(t)\} = \int_{0}^{\infty} f(t) e^{-st} dt \]
 con \(s\) variabile complessa generica, di forma \(\sigma + j\omega\) con
-\(\sigma\) e \(\omega\) \(\in\) \mathbb{R}
+\(\sigma\) e \(\omega\) \(\in\) \(\mathbb{R}\)
 
 e si usa \(F(s)\) per indicare \(\mathcal{L}\{f(t)\}\), convenzione
 ripresa dal caro vecchio \(F = \int f\).
 
 \subsection{Cosi notevoli}
-\label{sec:orga2402fc}
+\label{sec:org840e84f}
 
 I cosi notevoli si ricavano con due componenti
 \begin{itemize}
@@ -59,12 +59,10 @@ Le trasformate che vogliamo ricavare sono le seguenti
 L'esponenziale \& Co. sarà ricavato con i soliti teoremi da
 esponenziale (mi spiace)
 
-Per i polinomii \& Co. useremo varie merdate di derivazione e
-integrazione per andare dal gradino a una potenza, e da lì linearità
-\(\to\) polinomii \(\to\) e vissero tutti felici e contenti
+Per i polinomii \& Co.
 
 \subsubsection{Gradino unitario}
-\label{sec:org68c2429}
+\label{sec:org7ec61f8}
 
 \[ \frac{1}{s} \]
 
@@ -72,27 +70,47 @@ integrazione per andare dal gradino a una potenza, e da lì linearità
 e ora, a chi volesse un flashback dell'Argenti
 
 \subsubsection{Linearità}
-\label{sec:org5ae7f5e}
+\label{sec:org073ea8b}
 
 Grazialcazzo
 
 \subsubsection{Traslazione in frequenza}
-\label{sec:orgf97182b}
+\label{sec:orgafa5ec2}
 
-\subsubsection{Derivazione nel tempo}
-\label{sec:org7ecdcc6}
+da questa si ricava
+
+\subsubsection{Esponenziale}
+\label{sec:orgd3c8f46}
+
+abbiamo un esponenziale complesso, abbiamo la linearità, indovina un
+po'? Abbiamo
+
+\subsubsection{Seni e coseni}
+\label{sec:org798e986}
 
 \subsubsection{Derivazione in frequenza}
-\label{sec:org6ff3975}
+\label{sec:org8abef60}
+
+Con questa si può iniziare a scazzare con polinomii, si ricavano
+intanto i monomii in Laplace, poi linearità \(\to\) grazialcazzo
+
+\subsubsection{Rampa unitaria}
+\label{sec:org4edafa1}
+
+\subsubsection{Rampa non unitaria}
+\label{sec:orge56faf9}
+
+\subsubsection{Derivazione nel tempo}
+\label{sec:org64bce70}
 
 \subsubsection{Integrazione}
-\label{sec:orga043a82}
+\label{sec:orgdbced96}
 
 E ora, al fine di massimizzare il flashback argentialno
 
 \subsubsection{Convoluzione nel tempo}
-\label{sec:org6b551a1}
+\label{sec:org43d56d2}
 
 \subsubsection{Impulso di Dirac}
-\label{sec:orgbf6b817}
+\label{sec:org5150283}
 \end{document}

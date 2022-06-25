@@ -1,0 +1,163 @@
+% Created 2022-06-25 Sat 11:24
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{amsfonts}
+\date{\today}
+\title{}
+\hypersetup{
+ pdfauthor={},
+ pdftitle={},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 28.1 (Org mode 9.5.2)}, 
+ pdflang={English}}
+\begin{document}
+
+\tableofcontents
+
+
+\section{LTI TD}
+\label{sec:org651d966}
+
+abbiamo un sistema tempo-discreto descritto dalle solite equazioni per
+lo stato e uscita
+
+\begin{align*}
+&x(t+1) = f(t,x(t),u(t)) \\
+&y(t) = h(t,x(t),u(t)) \\
+\end{align*}
+
+Dato il titolo di questa sottosezione sappiamo che il sistema TD è
+LTI, lineare-tempo-invariante, quindi
+
+\begin{align*}
+&x(t+1) = f(x(t),u(t)) \\
+&y(t) = h(x(t),u(t)) \\
+\end{align*}
+
+con \(f(t)\) e \(h(t)\) funzioni lineari di f e u, vale a dire
+
+\begin{align*}
+&x(t+1) = Ax(t) + Bu(t) \\
+&y(t) = Cx(t) + Du(t) \\
+\end{align*}
+
+con \(A\), \(B\), \(C\), e \(D\) matrici di qualisiasi dimensione faccia
+tornare il problema.
+
+Lo scopo di questa sottosezione è: \\
+\textit\{Abbiamo lo stato, diciamo che ho anche l'input, se come varia
+lo stato con stato e input allora so come varia lo stato in generale,
+
+se diciamo di avere anche lo stato iniziale allora ho tutti gli stati
+se ho tutti gli stati e so come va l'uscita allora ho tutto,
+\emph{ANALISI SISTEMI BOIII}
+
+\subsection{Formule et al}
+\label{sec:org83a3627}
+Andando di
+
+\begin{align*}
+&x(t+1) = Ax(t) + Bu(t) \\
+&y(t) = Cx(t) + Du(t) \\
+\end{align*}
+
+Per qualche passo ci si ritrova con
+\[
+\text{mi fa fatica scriverlo in latex, facciamo dopo, ok?}\footnote{non lo fece dopo}
+\]
+Visto che qui siamo \emph{lineari} questo può essere diviso in 2
+parti, che si sommano tra di loro
+\begin{itemize}
+\item La parte a cui non interessa l'input
+\item La parte a cui interessa l'input
+\end{itemize}
+
+Si può agire in modo simile anche per l'uscita, ottenendo una forma
+complessiva del sistema nella seguente forma
+\[
+\text{mi fa fatica farlo ora}
+\]
+
+Queste si dicono rispettivamente \textbf{risposta libera} e \textbf{risposta
+forzata} e avranno le forme \emph{non mi va di farlo ora in latex} e \emph{non
+mi va di farlo ora in latex}
+
+\subsection{Risposte libere e forzate}
+\label{sec:org7e924cc}
+
+Evoluzione libera detta anche \emph{a ingresso nullo}, visto che è quello
+che verrebbe fuori se l'input fosse nullo, quindi senza un cazzo di
+contributo\par
+
+L' evoluzione forzata è detta anche \emph{nello stato zero},
+visto che è quello che verrebbe fuori se lo stato iniziale (e tutti i
+successivi, data la linearità) fosse nullo, e non desse quindi alcun
+contributo (mi sono scordato i conguingivi in seconda media, pardon)
+
+Per la risposta hai la risposta libera, o \emph{evoluzione libera
+dell'uscita}, e la risposta forzata, o \emph{evoluzione forzata
+dell'uscita}\par
+
+Se vuoi sembrare figo puoi dire \emph{principio di sovrapposizione degli
+effetti} invece di \emph{conseguenze grazialcazzo della
+linearità}
+
+\subsection{Conseguenze grazialcazzo della linearità, TD}
+\label{sec:org6e3b679}
+
+fai finta che abbia scritto qualcosa
+
+\section{LTI TC}
+\label{sec:org9131e08}
+
+un sistema LTI TC si descrive con
+
+\begin{equation*}
+\begin{cases}
+\dot{x}(t) &= Ax(t) + Bu(t) \\
+y(t) &= Cx(t) + Du(t)
+\end{cases}
+\end{equation*}
+
+abbiamo la condizione iniziale, abbiamo l'input, facciamo il solito.
+
+Qui le cose si fanno un pochino complicate, per semplicità
+consideriamo il caso autonomo con una sola dimensione\footnote{sferico, nel
+vuoto, e senza effetti relativistici}
+quindi, con \(x(t) \in \mathbb{R}\) e \(a \in \mathbb{R}\), si ottiene
+
+\[\dot{x}(t) = ax(t) \]
+per non far arrabbiare i matematci tra i telespettatori possimao
+specificare una condizione iniziale
+\[x(0) = x_0 \]
+essendo un'equazione differenziale di analisi 1 la risposta è \(e\), in
+particolare
+\[x(t) = e^{at} x_0\]
+Magnifico e tutto, ma come faccio se ho una matrice? In situazioni
+come queste è necessario ricordarsi che \emph{la matematica è una materia
+in cui scopri cose nuove inventandoti merdate a caso}
+
+\subsection{Abusi di notazione}
+\label{sec:org1713a94}
+La scoperta del numero \(e\) è stata fatta abbastanza ad hoc per
+problemi di derivate \& Co.
+Vediti il video di 3b1b, non so che dirti
+
+\subsection{Roba}
+\label{sec:org79b9f77}
+qui mette i modi naturali, gli introduce in modo umano, bla bla bla
+diagonalizzazione e da il contesto per sì e no il 70\% dei calcoli
+fatti in questo corso, rivediti sta roba BENE, ma BENE, ma tanto BENE.
+\end{document}

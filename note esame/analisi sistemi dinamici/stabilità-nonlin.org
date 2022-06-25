@@ -1,4 +1,4 @@
-#+TITLE: Sabilità sistemi non lineari
+#+TITLE: Stbilità sistemi non lineari
 #+AUTHOR: Res Cogitans, magno cum taedio
 
 (vuol dire che mi stavo annoiando molto, non fatevi strane idee)

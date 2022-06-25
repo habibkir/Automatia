@@ -47,7 +47,7 @@ Andando di
 Per qualche passo ci si ritrova con
 %TODO
 \[
-\text{mi fa fatica scriverlo in latex, facciamo dopo, ok?[fn::Non lo
+\text{mi fa fatica scriverlo in latex, facciamo dopo, ok? [fn:: non lo
 fece dopo]
 \]
 Visto che qui siamo /lineari/ questo può essere diviso in 2
