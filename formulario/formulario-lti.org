@@ -1,0 +1,61 @@
+#+LATEX_HEADER: \usepackage{amsfonts}
+
+* Sistemi LTI TC
+	* Definizione:
+	  \[\begin{cases}
+	  \dot{x}(t) &= Ax(t) + Bu(t) \\
+	  y(t) &= Cx(t) + Du(t)
+	  \end{cases} \]
+	  per i sistemi SISO (Single Input, Single Output) $B$ è un vettore colonna,
+	  $C$ è un vettore riga, $D \in \mathbb{R}$
+
+** Evoluzione stato e uscita
+*** Evoluzioni nel tempo
+	* Evoluzione stato nel tempo
+	  * libera
+	    \[x_l (t) = e^{At} x_0\]
+	  * forzata
+	    \[x_f (t) = \int_{0}^{t} e^{A(t-\tau)} Bu(\tau) d \tau\]
+	  * complessiva
+	    \[ x(t) = x_l (t) + x_l (t) =
+	    e^{At} x_0 + \int_{0}^{t} e^{A(t-\tau)} Bu(\tau) d \tau \]
+
+	* Evoluzione uscita nel tempo
+	  * libera
+	    \[y_l (t) = C x_l (t) = Ce^{At} x_0\]
+	  * forzata
+	    \[y_l (t) = C x_f (t) + D u(t) =
+	    \int_{0}^{t} C e^{A(t-\tau)} Bu(\tau) d \tau + D u(t) \]
+	  * complessiva
+	    \[y(t) = y_l (t) + y_f (t) = C e^{At} x_0 +
+	    \int_{0}^{t} C e^{A(t-\tau)} Bu(\tau) d \tau + D u(t) \]
+*** Evoluzioni in Laplace
+	* Evoluzione stato in Laplace
+	  * libera
+	    \[X_l (s) = \mathcal{L} \{e^{At} x_0\} = (sI - A)^{-1} x_0\]
+	  * forzata
+	    \[X_f (s) = (sI - A)^{-1} BU(s)\]
+	  * complessiva
+	    \[X(s) = X_l (s) + X_f (s) =
+	    (sI - A)^{-1} x_0 + (sI - A)^{-1} BU(s) \]
+
+	* Evoluzione uscita in Laplace
+	  * libera
+	    \[Y_l (s) = C X_l (s) = C(sI - A)^{-1} x_0\]
+	  * forzata
+	    \[Y_f (s) = C X_f (s) + D U(s) = C(sI - A)^{-1} BU(s) + DU(s)\]
+	  * complessiva
+	    \[Y(s) = Y_l (s) + Y_f (s) =
+	    C(sI - A)^{-1} x_0 + C(sI - A)^{-1} BU(s) + DU(s) \]
+	    
+*** Funzione di trasferimento
+\[G(s) = \frac{Y_f(s)}{U(s)} = C(sI-A)^{-1}B + D\]
+
+** Regimi transitorii e permanenti
+	* Regime permanente con u(t) gradino
+	  \begin{align*}
+	  &Y_f^U (s) = \frac{G(0)U_0}{s} \\
+	  &y_f^U (t) = G(0)U_0 \times 1(t)
+	  \end{align*}
+	* Regime permanente con u(t) sinusoidale
+	  

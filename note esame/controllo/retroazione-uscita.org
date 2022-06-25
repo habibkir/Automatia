@@ -1,0 +1,90 @@
+* Classificazinoe autovalori
+
+prendi il solito sistema
+\[\begin{cases}
+\dot{x}(t) &= Ax(t) + Bu(t) \\
+y(t) &= Cx(t)
+\end{cases}\]
+
+in laplace, con
+
+\[ X(s) = \mathcal{L}\{x(t)\},\ Y(s) = \mathcal{L}\{y(t)\},\ U(s) = \mathcal{L}\{u(t)\} \]
+
+si ottiene
+
+\[\begin{cases}
+sX(s) - x(0) &= AX(s) + BU(s) \\
+Y(s) &= CX(s) + DU(s)
+\end{cases}\]
+
+che diventa
+
+\[\begin{cases}
+X(s) &= (sI-A)^{-1}x(0) \text{ (libera) } + (sI-A)^{-1}BU(s) \text{ (forzata)} \\
+Y(s) &= C(sI-A)^{-1}x(0) \text{ (libera) } + C(sI-A)^{-1}BU(S) \text{ (forzata)}
+\end{cases}\]
+
+gli autovalori (non)controllabili si classificano per come lavorano
+con l'ingresso, in particolare per "posso usare l'uscita per scazzare
+col valore effettivo di questi cosi?".
+Le parti del sistema che lavorano con l'ingresso ($U(s)$) sono
+
+\begin{align*}
+(sI-A)^{-1}BU(s) ( &= X_f (s)) \\
+C(sI-A)^{-1}BU(s) ( &= Y_f (s))
+\end{align*}
+
+quindi gli autovalori controllabili saranno quelli che non partono
+quando faccio $(sI-A)^{-1}$, in quanto quando questi non partono posso
+modificare $X_f (s)$ vede questi autovalori.
+
+gli autovalori osservabili sono quelli che hanno un'effetto visibile
+sull'uscita, l'uscita è
+
+\[ Y(s) = C(sI-A)^{-1}x(0) \text{ (libera) }
++ C(sI-A)^{-1}BU(S) \text{ (forzata)} \]
+
+Qui quelli che non partono quando faccio $C(sI-A)^{-1}$ sono quelli
+che avranno un effetto visibile sull'uscita, quindi quelli osservabili
+
+(la parte con $C(sI-A)^{-1}B$ non può aggiungere autovalori quindi nel
+complessivo quelli restano)
+
+quindi:
+	* non parte con $(sI-A)^{-1}B \to$ permette all'ingresso di
+          modificare lo stato $\to$ *autovalore controllabile*
+	* non parte con $C(sI-A)^{-1} \to$ ha un'effetto visibile
+          sull'uscita $to$ *autovalore osservabile*
+
+inoltre:
+	* autovalori controllabili = radici di $\varphi _c(s)$,
+          *polinomio caratteristico di controllo* del sistema
+	  * per polinomii singolo ingresso = minimo comune multiplo di
+            di tutti i denominatori di $(sI-A)^{-1}B$
+	* autovalori osservabili = radici di $\varphi _o(s)$,
+          *polinomio caratteristico di osservazione* del sistema
+	  * per sistemi a singola uscita = minimo comune multiplo di
+            tutti i denominatori di $C(sI-A)^{-1}$
+	  * altimenti bla bla bla determinanti sottomatrici sticazzate
+
+** Poli del sistema
+quando un autovalore non parte ne' con $C(sI-A)^{-1}$ che con
+$(sI-A)^{-1}B$ allora non scomparirà neanche con $C(sI-A)^{-1}B$, vale
+a dire la nostra cara vecchia /funzione di trasferimento/.
+
+i *poli del sistema*, saranno quindi quegli autovalori che sono /non
+solum/ osservabili /sed etiam/ controllabili
+
+nei sistemi SISO saranno le radici di $G(s)$
+
+gli autovalori nascosti, (da non confondere con quelli non
+osservabili, per quanto il nome lo faccia credere) saranno tutti gli
+autovalori che *o* non sono osservabili, *o* non sono controllabili
+
+* Retroazione algebrica sull'uscita
+
+È una cosa molto limitata
+
+
+
+
