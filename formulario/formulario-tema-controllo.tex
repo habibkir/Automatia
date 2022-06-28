@@ -44,8 +44,6 @@
 \subsection{Retroazione sul'Uscita}
 
 \subsubsection{Retroazione Algebrica sull'Uscita}
-è una retorazinoe algebrica sullo stato ma $F$ può solo essere
-$K \times C$ con $K \in \mathbb{R}$
 \begin{itemize}
 \item Uscita controllore
   \begin{align*}
@@ -59,16 +57,15 @@ $K \times C$ con $K \in \mathbb{R}$
   \end{cases} \]
 \item Funzione di Trasferimento in Ciclo Chiuso
   \[ G^{\ast} _{y^0 y} (s) = \frac{G(s)}{1+ KG(s)} \mathbf{H}\]
-  Se fai
+  con
   \[ G(s) = \frac{b(s)}{a(s)} \]
-  Ottieni
   \[ G^{\ast} _{y^0 y} (s)
   = \frac{G(s)}{1+KG(s)} \mathbf{H}
   = \frac{\frac{b(s)}{a(s)}}{\frac{a(s) + Kb(s)}{a(s)}} \mathbf{H}
   = \frac{b(s)}{a(s) + Kb(s)} \mathbf{H}
   = \frac{b(s)}{a^{\ast}(s)} \mathbf{H}\]
-  vede solo l'uscita, non modifica gli autovalori nascosti
-  $\varphi ^{\ast} (s) = \varphi_{normale} (s)$ \item Polinomio caratteristico in ciclo chiuso
+  $\varphi ^{\ast} (s) = \varphi_{normale} (s)$
+\item Polinomio caratteristico in ciclo chiuso
   \[ \varphi ^{\ast} (s) = \varphi_{h} (s) a^{\ast} (s)
   = \varphi ^{\ast} (s) (a(s) + Kb(s)) \]
 \end{itemize}

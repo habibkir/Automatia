@@ -1,1 +1,78 @@
 #+LATEX_HEADER: \usepackage{amssymb}
+
+* Analisi
+** Laplace
+ * Definizione
+ * Teoremi
+   * Linearità
+   * Traslazinoe in frequenza
+   * Derivazione nel tempo
+   * Derivazione in frequenza
+   * Integrazione nel tempo
+ * Notevoli
+   * Gradino
+   * Esponenziale
+   * Seno
+   * Coseno
+   * Delta
+   * Rampa unitaria
+   * Rampa generica
+   * Monomio \times esponenziale
+
+** Analisi TC
+tutto è bene ciò che ha gli autovalori con parte reale strettamente
+minore di 0 (proverbio africano)
+ * Generico
+ * In laplace
+ * Polinomio caratteristico
+ * Funzione di trasferimento
+   * Autovalori nascosti
+ * Stabilità interna
+ * Stabilità esterna
+ * Regimi permanenti
+   * Gradino
+   * Seno
+
+** Sisitemi non lineari
+ * Generico
+ * Linearizzazione alla Lyapunov
+ * Stabilità secondo linearizzazine alla Lyapunovq
+
+** Zeta
+ * Definizione
+ * Proprietà
+
+** Analisi TD	  
+ * Generico
+ * In Z
+
+* Controllo
+** Retroazione Stato
+ * Uscita controllore
+ * Coso complessivo
+ * Matrici in ciclo chiuso
+ * Polinomio caratteristico
+** Classificazine autovalori
+ * Non controllabili
+ * Non osservabili
+ * Nascosti
+** Retroazinoe Uscita
+ * Retroazione algebrica
+   * Uscita controllore
+   * Coso complessivo
+   * Matrici in ciclo chiuso
+   * Funzinoe di trasferimento in ciclo chiuso
+   * Polinomio caratteristico
+   * Limiti
+ * Retroazine dinamica
+   * Uscita controllore
+   * Coso complessivo
+   * Matrici in ciclo chiuso
+   * Polinomio caratteristico
+   * Funzinoe di trasferimento in ciclo chiuso
+** Regolatore
+ * Osservatore di Luengerger
+ * Sistema se consideri errore nello stato
+ * Matrice dinamica
+ * Polinomio caratteristico
+     

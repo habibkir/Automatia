@@ -41,7 +41,7 @@ e/o slide e/o la cazzo di cane
 \subsection{Teoremi}
 \label{sec:orgbac12db}
 \begin{itemize}
-\item Ritardo
+\item Traslazione in frequenza
 \[\mathcal{L}\{e^{\lambda t}f(t)\} = F(s-\lambda)\]
 \item Prodotto per \(t\) / derivata in frequenza
 \[\mathcal{L}\{t f(t)\} = -\frac{d}{ds} F(s)\]
@@ -152,7 +152,8 @@ per i sistemi SISO (Single Input, Single Output) \(B\) è un vettore colonna,
 \item libera
 \[x_l (t) = e^{At} x_0\]
 \item forzata
-\[x_f (t) = \int_{0}^{t} e^{A(t-\tau)} Bu(\tau) d \tau\]
+
+  \[x_f (t) = \int_{0}^{t} e^{A(t-\tau)} Bu(\tau) d \tau\]
 \item complessiva
 \[ x(t) = x_l (t) + x_l (t) =
 	    e^{At} x_0 + \int_{0}^{t} e^{A(t-\tau)} Bu(\tau) d \tau \]

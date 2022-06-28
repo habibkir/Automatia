@@ -1,0 +1,159 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+
+\begin{document}
+
+\section{Sistemi di Controllo}
+
+\subsection{Retroazione sullo Stato}
+
+\begin{itemize}
+\item Uscita controllore
+  \[ u(t) = Hy^{0}(t) - Fx(t) \]
+\item Sistema in ciclo chiuso
+  \begin{align*}
+    \mathcal{P}^{\ast} = &\begin{cases}
+    \dot{x}(t) &= Ax(t) + Bu(t) \\
+    y(t) &= Cx(t)
+  \end{cases}
+  \Rightarrow \begin{cases}
+    \dot{x}(t) &= Ax(t) + B (Hy^{0}(t) - Fx(t)) \\
+    y(t) &= Cx(t)
+  \end{cases} \\
+  \Rightarrow &\begin{cases}
+    \dot{x}(t) &= (A-BF)x(t) + BHy^{0} \\
+    y(t) &= Cx(t)
+  \end{cases}
+  = \begin{cases}
+    \dot{x}(t) &= A^{\ast}x(t) + B^{\ast}y^{0}(t) \\
+    y(t) &= Cx(t)
+  \end{cases} \\
+  \end{align*}
+\item Polinomio caratteristico in ciclo chiuso
+  \[ \varphi ^{\ast}(s) = \det(sI - A) = \det(sI - A + BF) \]%
+\item Funzione di trasferimento in ciclo chiuso
+  \[ G^{\ast}_{y^0 y} (s) = \frac{r(s)}{\varphi ^{\ast} (s)} \]
+  con
+  \[ r(s) = C Adj(sI-A)B \]
+  nominatore della funzione di trasferimento di $\mathcal{P}$ normale
+\end{itemize}
+
+\subsection{Retroazione sul'Uscita}
+
+\subsubsection{Retroazione Algebrica sull'Uscita}
+è una retorazinoe algebrica sullo stato ma $F$ può solo essere
+$K \times C$ con $K \in \mathbb{R}$
+\begin{itemize}
+\item Uscita controllore
+  \begin{align*}
+    u(t) &= -Ky(t) + H y^0 (t) \\
+    &= -KCx(t) + Hy^0 (t)
+  \end{align*}
+\item Sistema in ciclo chiuso
+  \[ \mathcal{P}^{\ast} = \begin{cases}
+    \dot{x}(t) &= (A-BKC)x(t) + BHy^0 (t) \\
+    y(t) &= Cx(t)
+  \end{cases} \]
+\item Funzione di Trasferimento in Ciclo Chiuso
+  \[ G^{\ast} _{y^0 y} (s) = \frac{G(s)}{1+ KG(s)} \mathbf{H}\]
+  Se fai
+  \[ G(s) = \frac{b(s)}{a(s)} \]
+  Ottieni
+  \[ G^{\ast} _{y^0 y} (s)
+  = \frac{G(s)}{1+KG(s)} \mathbf{H}
+  = \frac{\frac{b(s)}{a(s)}}{\frac{a(s) + Kb(s)}{a(s)}} \mathbf{H}
+  = \frac{b(s)}{a(s) + Kb(s)} \mathbf{H}
+  = \frac{b(s)}{a^{\ast}(s)} \mathbf{H}\]
+  vede solo l'uscita, non sa niente degli autovalori nascosti, non può agire su
+  di essi
+  $\varphi ^{\ast} (s) = \varphi_{normale} (s)$ \item Polinomio caratteristico in ciclo chiuso
+  \[ \varphi ^{\ast} (s) = \varphi_{h} (s) a^{\ast} (s)
+  = \varphi ^{\ast} (s) (a(s) + Kb(s)) \]
+\end{itemize}
+
+\subsubsection{Retroazione Dinamica sull'Uscita}
+ora con $K$ e $H$ pari a $K(s)$ e $H(s)$
+Scelta tipica $H(s) = H_f (s) K(s)$, spesso con
+$H_f (s) = costante \in \mathbb{R}$, cose non segnate non cambiano
+dall'algebrica
+
+\begin{itemize}
+\item Funzione di trasferimento in ciclo chiuso
+  \begin{align*}
+    G^{\ast} _{y^0 y}(s) &= \frac{G(s)}{1 + KG(s)} \mathbf{H(s)} \\
+    &= \frac{G(s)K(s) \mathbf{H_f}}{1 + K(s)G(s)}
+  \end{align*}
+  Mettendo \textbf{non solum}
+  $G(s) = \frac{b(s)}{a(s)}$ \textbf{sed etiam}
+  $K(s) = \frac{q(s)}{p(s)}$ si ottiene
+  \[ G(s) = \frac{b(s)q(s)}{a(s)b(s) + b(s)q(s)} \mathbf{H_f} =
+  \frac{b^{\ast}(s)}{a^{\ast}(s)} \mathbf{H_f} \]
+  anche questa retroazione, agendo sull'uscita, non riescie a toccare gli
+  autovalori nascosti
+  $\varphi ^{\ast} (s) = \varphi_{normale} (s)$
+\item Polinomio caratteristico in ciclo chiuso
+  \[ \varphi ^{\ast} (s) = \varphi_h (s) a^{\ast} (s)
+  = \varphi _h (s) a(s)b(s) + b(s)q(s) \]
+\end{itemize}
+
+\subsubsection{Regolatore}
+
+Se si riesce ad approssimare lo stato da fuori non dobbiamo preoccuparci dei
+limiti della retroazione sull'uscita
+
+\begin{itemize}
+\item Osservatore di Luenberger
+  \begin{align*}
+    \mathcal{O} : \frac{d\hat{x}}{dt} &= A\hat{x} + B\hat{x} + L(y-C\hat{x}) \\
+    &= A\hat{x} + B\hat{x} + L(C(x-\hat{x}))
+  \end{align*}
+\item Evoluzione dell'errore (errore si chiama $\epsilon$, $e$ sarebbe ambiguo)
+  \begin{align*}
+    \epsilon (t) &= (x(t) - \hat{x}(t)) \\
+    \frac{d\epsilon (t)}{dt} &= \frac{d(x(t) - \hat{x}(t))}{dt}
+    = \text{roba} = (A-LC)(\epsilon (t))
+  \end{align*}
+\end{itemize}
+si considera l'errore $\epsilon (t)$ come parte dello stato del sistema con
+l'osservatore in ciclo chiuso, quindi 
+\begin{itemize}
+\item Uscita della retroazione sullo stato approssimato
+  \[ u(t) = -F\hat{x}(t) + Hy^0 (t) = -F(x(t) - \epsilon (t)) + Hy^0 (t)\]
+\item Stato ed evoluzione completa del sistema in ciclo chiuso
+  \[\begin{cases}
+  \dot{x}(t) &= Ax(t) + Bu(t) \\
+  y(t) &= Cx(t)
+  \end{cases} \Rightarrow
+  \begin{cases}
+    \dot{x}(t) &= Ax(t) - BF(x(t) - \epsilon (t)) + BH y^0 (t) \\
+    \dot{\epsilon}(t) &= (A-LC) \epsilon (t) \\
+    y &= Cx
+  \end{cases}\]
+  per ``comodità'' si riscrive $\dot{x}(t)$ come:
+  \[\dot{x}(t) = (A-BF)x(t) + BF(\epsilon (t)) + BH y^0 (t) =
+  \begin{bmatrix} (A-BF) & BF \end{bmatrix}
+  \begin{bmatrix} x(t) \\ \epsilon(t) \end{bmatrix}\]
+  Prendendo ora un ``superstato'' fatto da
+  $\begin{bmatrix} x(t) \\ \epsilon(t) \end{bmatrix}$
+  si ottiene
+  \[\begin{cases}
+  \begin{bmatrix} \dot{x}(t) \\ \dot{\epsilon}(t) \end{bmatrix} &=
+  \begin{bmatrix} (A-BF) & BF \\ 0 & (A-LC) \end{bmatrix}
+  \begin{bmatrix} x(t) \\ \epsilon(t) \end{bmatrix} +
+  \begin{bmatrix} BH \\ 0 \end{bmatrix} y^0\\
+  y(t) &= \begin{bmatrix}C & 0\end{bmatrix}
+    \begin{bmatrix} x(t) \\ \epsilon(t) \end{bmatrix}
+  \end{cases}\]
+  quell'abominio di matrice è come lo stato fa la derivata di se stesso, nota a
+  noi ipse-dixitiani come la \textbf{matrice della dinamica} in ciclo chiuso,
+  $\varphi (s)$ di un sistema di solito è il determinante della matrice della
+  dinamica, quindi
+\item Polinomio caratteristico in ciclo chiuso
+  Quell'affare di matricione è \textbf{quadrato a blocchi}, quindi il
+  determinante/ polinomio caratteristico sarà
+  \[ \varphi ^{\ast} (s) = \det(sI - A + BF) \det(sI - A + LC) \]
+\end{itemize}
+\end{document}

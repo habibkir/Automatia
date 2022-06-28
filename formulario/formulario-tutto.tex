@@ -1,0 +1,195 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+\begin{document}
+
+%========ANALISI SISTEMI DINAMICI========
+\section{Trasformata Laplace}
+Definita come
+\[\mathcal{L}\{f(t)\} = \int_{0}^{\infty} f(t) e^{-st} dt = F(s)\]
+
+\subsection{Teoremi}
+\begin{itemize}
+\item Traslazine in frequenza
+  \[\mathcal{L}\{e^{\lambda t}f(t)\} = F(s-\lambda)\]
+\item Prodotto per \(t\) / derivata in frequenza
+  \[\mathcal{L}\{t f(t)\} = -\frac{d}{ds} F(s)\]
+\end{itemize}
+
+\subsection{Notevoli}
+\[ \mathcal{L}\{1(t)\} = \frac{1}{s} \ \ ; \ \
+\mathcal{L}\{e^{\lambda t} 1(t)\} = \frac{1}{s- \lambda} \]
+
+\[ \mathcal{L}\{\sin(\omega _0 t) 1(t)\} = \frac{\omega _0}{s^2 + \omega _0 ^2}
+\ \ ; \ \ \mathcal{L}\{\cos(\omega _0 t) 1(t)\} = \frac{s}{s^2 + \omega _0 ^2} \]
+
+\[ \mathcal{L}\{\delta (t)\} = 1 \ \ ; \ \
+\mathcal{L}\{t 1(t)\} = \frac{1}{s^2} \ \ ; \ \
+\mathcal{L}\{t^2 1(t)\} = \frac{2}{s^3} \ \ ; \ \
+\mathcal{L}\{\frac{t^l}{l!} e^{at} 1(t)\} = \frac{1}{(s-a)^{l+1}}\]
+
+
+\section{Antitrasformata Laplace}
+
+\subsection{Poli Singoli}
+
+\subsubsection{Teorema dei residui}
+\begin{align*}
+  & F(s) = \sum_{i=0}^{n} \frac{K_i}{s-p_i} \\
+  & K_i = \lim_{s \to p_i} (s-p_i) F(s)
+\end{align*}
+
+\begin{itemize}
+\item In 0 $\Rightarrow 1(s)$
+\item Else if $\in \mathbb{R} \Rightarrow e^{polo\ t} 1(s)$
+\item Complessi coniugati \(\sigma \pm j\omega\) Detti:
+  \begin{itemize}
+  \item \(K\) il polo corrispondente a $\sigma + j\omega$
+  \item \(\alpha\) e \(\beta\) le parti reali e immaginarie di \(K\)
+  \end{itemize}
+  \[ e^{\sigma t} (2 \alpha \cos(\omega t) - 2 \beta \sin(\omega t)) 1(t) \]
+\end{itemize}
+
+\subsection{Poli Multipli}
+\begin{itemize}
+\item In 0 $\Rightarrow t^{\text{molteplicità polo} -1} 1(t)$
+\item Else if $ \in \mathbb{R} \Rightarrow t^{\text{molteplicità polo} -1} 1(t)$
+\item Else $\Rightarrow \text{ mi sa lo vedo dopo}$
+\end{itemize}
+
+\subsection{Sistemi LTI TC}
+Definizione : 
+\[\begin{cases}
+\dot{x}(t) &= Ax(t) + Bu(t) \\
+y(t) &= Cx(t) + Du(t)
+\end{cases} \]
+per i sistemi SISO (Single Input, Single Output) \(B\) è un vettore colonna,
+\(C\) è un vettore riga, \(D \in \mathbb{R}\)
+\begin{itemize}
+\item Evoluzioni nel tempo
+  \begin{align*}
+    &x_l (t) = e^{At} x_0 \\
+    &x_f (t) = \int_{0}^{t} e^{A(t-\tau)} Bu(\tau) d \tau \\
+    &y_l (t) = C x_l (t) = Ce^{At} x_0 \\
+    &y_f (t) = \int_{0}^{t} C e^{A(t-\tau)} Bu(\tau) d \tau + D u(t) 
+  \end{align*}
+\item Evoluzioni in Laplace
+  \begin{align*}
+    &X_l (s) = \mathcal{L} \{e^{At} x_0\} = (sI - A)^{-1} x_0 \\
+    &X_f (s) = (sI - A)^{-1} BU(s) \\
+    &Y_l (s) = C X_l (s) = C(sI - A)^{-1} x_0 \\
+    &Y_f (s) = C X_f (s) + D U(s) = C(sI - A)^{-1} BU(s) + DU(s)
+  \end{align*}
+\end{itemize}
+
+Funzione di trasferimento
+\[G(s) = \frac{Y_f(s)}{U(s)} = C(sI-A)^{-1}B + D\]
+
+%========SISTEMI DI CONTROLLO========
+\section{Sistemi di Controllo}
+
+\subsection{Retroazione sullo Stato}
+
+\begin{itemize}
+\item Uscita controllore
+  \[ u(t) = Hy^{0}(t) - Fx(t) \]
+\item Sistema in ciclo chiuso
+  \begin{align*}
+    \mathcal{P}^{\ast} = \begin{cases}
+      \dot{x}(t) &= (A-BF)x(t) + BHy^{0} \\
+      y(t) &= Cx(t)
+    \end{cases} \iff
+    \begin{cases}
+      \dot{x}(t) &= A^{\ast}x(t) + B^{\ast}y^{0}(t) \\
+      y(t) &= Cx(t)
+    \end{cases} \\
+  \end{align*}
+\item Polinomio caratteristico in ciclo chiuso
+  \[ \varphi ^{\ast}(s) = \det(sI - A^{\ast}) = \det(sI - A + BF) \]%
+\item Funzione di trasferimento in ciclo chiuso
+  \[ G^{\ast}_{y^0 y} (s) = \frac{r(s)}{\varphi ^{\ast} (s)} \]
+  con
+  \[ r(s) = C Adj(sI-A)B \]
+  nominatore della funzione di trasferimento di $\mathcal{P}$ normale
+\end{itemize}
+
+\subsection{Retroazione sul'Uscita}
+
+\subsubsection{Retroazione Algebrica sull'Uscita}
+\begin{itemize}
+\item Uscita controllore
+  \begin{align*}
+    u(t) &= -Ky(t) + H y^0 (t) \\
+    &= -KCx(t) + Hy^0 (t)
+  \end{align*}
+\item Sistema in ciclo chiuso
+  \[ \mathcal{P}^{\ast} = \begin{cases}
+    \dot{x}(t) &= (A-BKC)x(t) + BHy^0 (t) \\
+    y(t) &= Cx(t)
+  \end{cases} \]
+\item Funzione di Trasferimento in Ciclo Chiuso
+  \[ G^{\ast} _{y^0 y} (s) = \frac{G(s)}{1+ KG(s)} \mathbf{H}\]
+  con
+  \[ G(s) = \frac{b(s)}{a(s)} \]
+  \[ G^{\ast} _{y^0 y} (s)
+  = \frac{b(s)}{a(s) + Kb(s)} \mathbf{H}
+  = \frac{b(s)}{a^{\ast}(s)} \mathbf{H}\]
+  non cambia autovalori nascosti, $\varphi ^{\ast} (s) = \varphi_{normale} (s)$
+\item Polinomio caratteristico in ciclo chiuso
+  \[ \varphi ^{\ast} (s) = \varphi_{h} (s) a^{\ast} (s)
+  = \varphi ^{\ast} (s) (a(s) + Kb(s)) \]
+\end{itemize}
+
+\subsubsection{Retroazione Dinamica sull'Uscita}
+\begin{itemize}
+\item Funzione di trasferimento in ciclo chiuso
+  \begin{align*}
+    G^{\ast} _{y^0 y}(s) &= \frac{G(s)}{1 + KG(s)} \mathbf{H(s)} \\
+    &= \frac{G(s)K(s) \mathbf{H_f}}{1 + K(s)G(s)}
+  \end{align*}
+  Mettendo $G(s) = \frac{b(s)}{a(s)}$ e $K(s) = \frac{q(s)}{p(s)}$ 
+  \[ G(s) = \frac{b(s)q(s)}{a(s)b(s) + b(s)q(s)} \mathbf{H_f} =
+  \frac{b^{\ast}(s)}{a^{\ast}(s)} \mathbf{H_f} \]
+  non cambia autovalori nascosti, $\varphi ^{\ast} (s) = \varphi_{normale} (s)$
+\item Polinomio caratteristico in ciclo chiuso
+  \[ \varphi ^{\ast} (s) = \varphi_h (s) a^{\ast} (s)
+  = \varphi _h (s) a(s)b(s) + b(s)q(s) \]
+\end{itemize}
+
+\subsubsection{Regolatore}
+\begin{itemize}
+\item Osservatore di Luenberger
+  \begin{align*}
+    \mathcal{O} : \frac{d\hat{x}}{dt} &= A\hat{x} + B\hat{x} + L(y-C\hat{x}) \\
+    &= A\hat{x} + B\hat{x} + L(C(x-\hat{x}))
+  \end{align*}
+\item Evoluzione dell'errore ($\epsilon$ è l'errore)
+  \begin{align*}
+    \epsilon (t) &= (x(t) - \hat{x}(t)) \\
+    \frac{d\epsilon (t)}{dt} &= \frac{d(x(t)-\hat{x}(t))}{dt} = (A-LC)(\epsilon (t))
+  \end{align*}
+\end{itemize}
+Sistema in ciclo chiuso
+\begin{itemize}
+\item Uscita della retroazione sullo stato approssimato
+  \[ u(t) = -F\hat{x}(t) + Hy^0 (t) = -F(x(t) - \epsilon (t)) + Hy^0 (t)\]
+\item Stato ed evoluzione completa del sistema in ciclo chiuso
+  \[\begin{cases}
+    \dot{x}(t) &= Ax(t) - BF(x(t) - \epsilon (t)) + BH y^0 (t) \\
+    \dot{\epsilon}(t) &= (A-LC) \epsilon (t) \\
+    y &= Cx
+  \end{cases}\]
+  \[\begin{cases}
+  \begin{bmatrix} \dot{x}(t) \\ \dot{\epsilon}(t) \end{bmatrix} &=
+  \begin{bmatrix} (A-BF) & BF \\ 0 & (A-LC) \end{bmatrix}
+  \begin{bmatrix} x(t) \\ \epsilon(t) \end{bmatrix} +
+  \begin{bmatrix} BH \\ 0 \end{bmatrix} y^0\\
+  y(t) &= \begin{bmatrix}C & 0\end{bmatrix}
+    \begin{bmatrix} x(t) \\ \epsilon(t) \end{bmatrix}
+  \end{cases}\]
+\item Polinomio caratteristico in ciclo chiuso
+  \[ \varphi ^{\ast} (s) = \det(sI - A + BF) \det(sI - A + LC) \]
+\end{itemize}
+\end{document}
